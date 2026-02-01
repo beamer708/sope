@@ -1188,6 +1188,57 @@ body:not(.vehicle-selected) [data-price].price-placeholder-text {
   border: 0;
 }
 
+.map-caption {
+  font-size: 0.8125rem;
+  color: var(--text-subtle);
+  margin-top: var(--space-md);
+  text-align: center;
+}
+
+.areas-primary {
+  margin-bottom: var(--space-2xl);
+  padding: var(--space-xl);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  border-left: 3px solid var(--accent);
+}
+
+.areas-primary-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: var(--space-md);
+  letter-spacing: -0.02em;
+}
+
+.areas-primary-desc {
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin: 0;
+}
+
+.areas-secondary {
+  margin-top: var(--space-2xl);
+  margin-bottom: var(--space-xl);
+}
+
+.areas-note {
+  padding: var(--space-lg);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: var(--space-2xl);
+}
+
+.areas-note p {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
 .areas-disclaimer {
   font-size: 0.9375rem;
   color: var(--text-muted);
