@@ -9,6 +9,7 @@ const DEFAULT_SIZE = 'coupe';
 
 document.addEventListener('DOMContentLoaded', () => {
   injectVehicleModal();
+  injectHeaderChangeCar();
   initNavToggle();
   initVehicleModal();
   initVehicleSizeSelector();
@@ -124,6 +125,17 @@ function updateVehicleSelectorUI() {
     const size = window.SOPES_PRICING.vehicleSizes.find(s => s.id === current);
     label.textContent = size ? size.label : 'Coupe';
   }
+}
+
+function injectHeaderChangeCar() {
+  const btn = document.getElementById('header-vehicle-btn');
+  const label = document.getElementById('header-vehicle-label');
+  if (!btn || !label || btn.querySelector('.header-vehicle-change')) return;
+  const change = document.createElement('span');
+  change.className = 'header-vehicle-change';
+  change.setAttribute('aria-hidden', 'true');
+  change.textContent = 'Change car';
+  label.after(change);
 }
 
 function updateHeaderVehicleLabel() {

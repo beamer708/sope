@@ -58,6 +58,54 @@ a {
 
 a:hover { color: var(--accent-hover); }
 
+/* ========== Icons (Streamline Bold style) ========== */
+.icon {
+  display: inline-block;
+  width: 1.25em;
+  height: 1.25em;
+  flex-shrink: 0;
+  vertical-align: -0.25em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.icon--nav {
+  width: 1rem;
+  height: 1rem;
+  vertical-align: -0.15em;
+}
+
+.icon--section {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 0.35rem;
+  vertical-align: -0.35em;
+  color: var(--accent);
+}
+
+.icon--btn {
+  width: 1.125rem;
+  height: 1.125rem;
+  margin-right: 0.35rem;
+  vertical-align: -0.2em;
+}
+
+.icon--social {
+  width: 1.125rem;
+  height: 1.125rem;
+  margin-right: 0.25rem;
+  vertical-align: -0.2em;
+}
+
+.icon-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
 .container {
   width: 100%;
   max-width: var(--container);
@@ -102,6 +150,9 @@ a:hover { color: var(--accent-hover); }
 }
 
 .nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
   font-size: 0.875rem;
   font-weight: 500;
   color: var(--text-muted);
@@ -129,7 +180,8 @@ a:hover { color: var(--accent-hover); }
 
 /* ========== Buttons ========== */
 .btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   padding: 0.75rem 1.5rem;
   font-size: 0.9375rem;
   font-weight: 600;
@@ -194,7 +246,9 @@ a:hover { color: var(--accent-hover); }
 }
 
 .hero-badge {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
   font-size: 0.8125rem;
   font-weight: 500;
   color: var(--text-muted);
@@ -382,6 +436,10 @@ a:hover { color: var(--accent-hover); }
 
 /* ========== Header vehicle trigger ========== */
 .header-vehicle-btn {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.125rem;
   padding: var(--space-xs) var(--space-sm);
   font-size: 0.8125rem;
   font-weight: 500;
@@ -400,6 +458,18 @@ a:hover { color: var(--accent-hover); }
 
 #header-vehicle-label {
   color: var(--text);
+}
+
+.header-vehicle-change {
+  display: none;
+  font-size: 0.6875rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  line-height: 1.2;
+}
+
+body.vehicle-selected .header-vehicle-change {
+  display: block;
 }
 
 /* ========== Price display ========== */
@@ -582,6 +652,8 @@ body:not(.vehicle-selected) [data-price].price-placeholder-text {
 }
 
 .section-label {
+  display: inline-flex;
+  align-items: center;
   font-size: 0.8125rem;
   font-weight: 500;
   color: var(--accent);
@@ -591,6 +663,9 @@ body:not(.vehicle-selected) [data-price].price-placeholder-text {
 }
 
 .section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
   font-size: clamp(1.5rem, 3vw, 2rem);
   font-weight: 700;
   color: var(--text);
@@ -648,6 +723,9 @@ body:not(.vehicle-selected) [data-price].price-placeholder-text {
 }
 
 .about-phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
   font-size: 1.25rem;
   font-weight: 600;
   color: var(--accent);
@@ -764,6 +842,9 @@ body:not(.vehicle-selected) [data-price].price-placeholder-text {
 }
 
 .contact-strip-title {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
   font-size: 1rem;
   font-weight: 600;
   color: var(--text);
@@ -771,7 +852,9 @@ body:not(.vehicle-selected) [data-price].price-placeholder-text {
 }
 
 .contact-strip-phone {
-  display: block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
   font-size: 1.5rem;
   font-weight: 600;
   color: var(--accent);
@@ -810,8 +893,17 @@ body:not(.vehicle-selected) [data-price].price-placeholder-text {
 }
 
 .footer-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
   font-size: 0.9375rem;
   color: var(--text-muted);
+}
+
+.footer-social a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
 }
 
 .footer-links a:hover { color: var(--text); }
@@ -844,6 +936,10 @@ body:not(.vehicle-selected) [data-price].price-placeholder-text {
 }
 
 .page-title {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.35rem;
   font-size: clamp(1.75rem, 4vw, 2.25rem);
   font-weight: 700;
   color: var(--text);
@@ -1053,6 +1149,9 @@ body:not(.vehicle-selected) [data-price].price-placeholder-text {
 }
 
 .info-card .contact-phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
   font-size: 1.5rem;
   font-weight: 600;
   color: var(--accent);
