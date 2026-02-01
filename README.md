@@ -13,7 +13,7 @@ A premium, dark-themed website for Sopes Auto Detailing. Built with vanilla HTML
 
 1. **Hero** — Bold headline, CTAs (View Packages, Call for Quote)
 2. **About** — Business intro, experience, contact
-3. **Packages** — Exterior, Interior, Additional Services (from Payhip)
+3. **Packages** — Exterior, Interior, Additional Services
 4. **Why Choose Us** — Expert care, premium results, convenience
 5. **Process** — Book → Inspect → Detail → Enjoy
 6. **Gallery** — Placeholders for before/after photos
@@ -35,7 +35,6 @@ npx serve .
 - **Gallery:** Replace placeholder divs with real images
 - **Testimonials:** Add real reviews as they come in
 
-## Source
+## Content
 
-Content sourced from [payhip.com/sopesdetailing](https://payhip.com/sopesdetailing). No services, prices, or policies invented.
-# sope
+Services, packages, and policies reflect Sopes Auto Detailing. Replace placeholder pricing in `pricing-data.js` with confirmed figures.

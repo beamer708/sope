@@ -1,11 +1,8 @@
 /**
  * Sopes Auto Detailing — Pricing by vehicle size
  *
- * IMPORTANT: The Payhip store (https://payhip.com/sopesdetailing) does not
- * display specific prices; it says "Call for a free quote" and "View pricing
- * and more service details below" (Notion link). The base prices below are
- * PLACEHOLDERS for the dynamic pricing UI. Replace with real prices from
- * Sopes Auto Detailing once confirmed.
+ * Base prices below are placeholders for the dynamic pricing UI.
+ * Replace with real prices from Sopes Auto Detailing once confirmed.
  */
 
 window.SOPES_PRICING = {
@@ -17,7 +14,7 @@ window.SOPES_PRICING = {
     { id: 'large', label: 'Large SUV / Van', multiplier: 1.5 }
   ],
 
-  /* Base prices (sedan). REPLACE WITH REAL PRICES — not listed on Payhip. */
+  /* Base prices (sedan). REPLACE WITH REAL PRICES once confirmed. */
   services: {
     exterior: 150,
     interior: 150,
@@ -27,7 +24,7 @@ window.SOPES_PRICING = {
     paintDecontaminationClayBar: 100
   },
 
-  /* Maintenance packages NOT listed on Payhip. Placeholders; confirm with business. */
+  /* Maintenance packages. Placeholders; confirm with business. */
   maintenance: {
     biweekly: 120,
     monthly: 140,

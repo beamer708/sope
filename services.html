@@ -22,6 +22,7 @@
         <a href="policies.html">Policies / FAQ</a>
         <a href="booking.html" class="nav-cta">Book Now</a>
       </nav>
+      <button type="button" class="header-vehicle-btn" id="header-vehicle-btn" aria-label="Select vehicle size">Vehicle: <span id="header-vehicle-label">Sedan</span></button>
       <button class="nav-toggle" aria-label="Menu">
         <span></span>
         <span></span>
@@ -33,104 +34,125 @@
   <main class="page">
     <div class="container">
       <header class="page-head">
-        <h1 class="page-title">Services</h1>
-        <p class="page-desc">All services from Sopes Auto Detailing. Pricing scales by vehicle size. Call for a free quote: <a href="tel:4849990194">(484) 999-0194</a>.</p>
-        <div class="vehicle-size-selector" style="margin-top: var(--space-xl);">
-          <p class="vehicle-size-label">Vehicle size (for pricing below):</p>
-          <p class="vehicle-size-current">Sedan</p>
-          <div class="vehicle-size-buttons">
-            <button type="button" class="vehicle-size-btn active" data-vehicle-size="sedan" aria-pressed="true">Sedan</button>
-            <button type="button" class="vehicle-size-btn" data-vehicle-size="coupe" aria-pressed="false">Coupe</button>
-            <button type="button" class="vehicle-size-btn" data-vehicle-size="suv" aria-pressed="false">SUV</button>
-            <button type="button" class="vehicle-size-btn" data-vehicle-size="truck" aria-pressed="false">Truck</button>
-            <button type="button" class="vehicle-size-btn" data-vehicle-size="large" aria-pressed="false">Large SUV / Van</button>
-          </div>
-        </div>
+        <h1 class="page-title">Services &amp; Packages</h1>
+        <p class="page-desc">One-time detailing services and recurring maintenance packages. Pricing updates live based on your vehicle size — use <strong>Vehicle: [size]</strong> in the header to change. Call for a free quote: <a href="tel:4849990194">(484) 999-0194</a>.</p>
       </header>
 
-      <!-- Exterior Package -->
-      <section id="exterior" class="service-block">
-        <div class="package-head">
-          <div class="package-media">
-            <img src="photos/1.jpg" alt="Exterior Package" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-            <div class="package-media-placeholder" style="display:none;"><span>Replace: Exterior detail</span></div>
-          </div>
-          <div class="package-info">
-            <h2>Exterior Package</h2>
+      <!-- One-time services (expandable) -->
+      <h2 class="section-title">One-time services</h2>
+      <p class="section-desc">Select a service to see what’s included and pricing. Expand any card for details.</p>
+      <div class="service-accordion">
+        <div id="exterior" class="service-accordion-item">
+          <button type="button" class="service-accordion-trigger">
+            <span>Exterior Package</span>
+            <span class="price-tag" data-price="exterior" data-price-prefix="Starting at ">Starting at $150</span>
+            <span class="accordion-icon" aria-hidden="true">▼</span>
+          </button>
+          <div class="service-accordion-body">
             <p>Restore and protect your vehicle's exterior with a deep clean and professional finish. Perfect for maintaining shine, boosting curb appeal, and preserving your paint's condition for long-term durability.</p>
-            <p class="service-block-price"><span data-price="exterior" data-price-prefix="Starting at ">Starting at $150</span></p>
+            <h3 class="package-list-title">What's included?</h3>
+            <ul class="package-list">
+              <li><strong>Touchless Pre-Foam Soak:</strong> Encapsulates and lifts dirt and embedded grime.</li>
+              <li><strong>Precision Rinse:</strong> Detailed full-body rinse with attention to wheel wells, trim, and gas cap area.</li>
+              <li><strong>Meticulous Wheel & Tire Cleaning:</strong> Removes brake dust and grime from wheels, tires, and barrels.</li>
+              <li><strong>Targeted Bug & Tar Removal:</strong> Eliminates stubborn road contaminants from high-impact zones.</li>
+              <li><strong>Luxurious Foam Bath:</strong> Rich, hand-applied foam for a deep, gentle cleanse.</li>
+              <li><strong>Iron Remover Application:</strong> Dissolves embedded iron particles to protect your finish.</li>
+              <li><strong>Clay Bar Treatment:</strong> Removes bonded contaminants for a glass-smooth surface.</li>
+              <li><strong>Durable Paint Sealant:</strong> High-gloss protective barrier lasting several weeks.</li>
+              <li><strong>Trim Protection:</strong> Dresses and restores exterior plastics for a like-new look.</li>
+              <li><strong>Crystal Clear Windows:</strong> Streak-free clarity on all glass, inside and out.</li>
+              <li><strong>Luxury Tire Shine:</strong> Deep, rich tire gloss to complement your vehicle's appearance.</li>
+            </ul>
             <a href="booking.html" class="btn btn-primary">Book Now</a>
           </div>
         </div>
-        <h3 class="package-list-title">Professional Exterior Detail — What's Included?</h3>
-        <ul class="package-list">
-          <li><strong>Touchless Pre-Foam Soak:</strong> Encapsulates and lifts dirt and embedded grime.</li>
-          <li><strong>Precision Rinse:</strong> Detailed full-body rinse with attention to wheel wells, trim, and gas cap area.</li>
-          <li><strong>Meticulous Wheel & Tire Cleaning:</strong> Removes brake dust and grime from wheels, tires, and barrels.</li>
-          <li><strong>Targeted Bug & Tar Removal:</strong> Eliminates stubborn road contaminants from high-impact zones.</li>
-          <li><strong>Luxurious Foam Bath:</strong> Rich, hand-applied foam for a deep, gentle cleanse.</li>
-          <li><strong>Iron Remover Application:</strong> Dissolves embedded iron particles to protect your finish.</li>
-          <li><strong>Clay Bar Treatment:</strong> Removes bonded contaminants for a glass-smooth surface.</li>
-          <li><strong>Durable Paint Sealant:</strong> High-gloss protective barrier lasting several weeks.</li>
-          <li><strong>Trim Protection:</strong> Dresses and restores exterior plastics for a like-new look.</li>
-          <li><strong>Crystal Clear Windows:</strong> Streak-free clarity on all glass, inside and out.</li>
-          <li><strong>Luxury Tire Shine:</strong> Deep, rich tire gloss to complement your vehicle's appearance.</li>
-        </ul>
-      </section>
 
-      <!-- Interior Package -->
-      <section id="interior" class="service-block">
-        <div class="package-head">
-          <div class="package-media">
-            <img src="photos/2.jpg" alt="Interior Package" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-            <div class="package-media-placeholder" style="display:none;"><span>Replace: Interior detail</span></div>
-          </div>
-          <div class="package-info">
-            <h2>Interior Package</h2>
+        <div id="interior" class="service-accordion-item">
+          <button type="button" class="service-accordion-trigger">
+            <span>Interior Package</span>
+            <span class="price-tag" data-price="interior" data-price-prefix="Starting at ">Starting at $150</span>
+            <span class="accordion-icon" aria-hidden="true">▼</span>
+          </button>
+          <div class="service-accordion-body">
             <p>Revitalize your car's interior with deep cleaning and sanitization. We remove stains, eliminate odors, and leave every surface spotless for a fresh, like-new feel.</p>
-            <p class="service-block-price"><span data-price="interior" data-price-prefix="Starting at ">Starting at $150</span></p>
+            <h3 class="package-list-title">What's included?</h3>
+            <ul class="package-list">
+              <li><strong>Thorough Interior Vacuuming:</strong> Comprehensive vacuuming of all carpets, seats, mats, and trunk to remove dirt and debris.</li>
+              <li><strong>High-Temperature Steam Cleaning:</strong> Sanitize and deep clean all interior surfaces with steam, eliminating bacteria and allergens.</li>
+              <li><strong>Complete Surface Cleaning:</strong> Clean, restore, and condition dashboards, door panels, consoles, and trim.</li>
+              <li><strong>Deep Carpet & Seat Shampoo:</strong> Shampoo and extract upholstery seats and carpets to remove deep stains, and odors.</li>
+              <li><strong>Floor mats cleaned and conditioned.</strong></li>
+              <li><strong>Crystal-Clear Interior Glass:</strong> Streak-free cleaning of all interior windows and mirrors for flawless visibility.</li>
+            </ul>
             <a href="booking.html" class="btn btn-primary">Book Now</a>
           </div>
         </div>
-        <h3 class="package-list-title">Interior Package — What's Included?</h3>
-        <ul class="package-list">
-          <li><strong>Thorough Interior Vacuuming:</strong> Comprehensive vacuuming of all carpets, seats, mats, and trunk to remove dirt and debris.</li>
-          <li><strong>High-Temperature Steam Cleaning:</strong> Sanitize and deep clean all interior surfaces with steam, eliminating bacteria and allergens.</li>
-          <li><strong>Complete Surface Cleaning:</strong> Clean, restore, and condition dashboards, door panels, consoles, and trim.</li>
-          <li><strong>Deep Carpet & Seat Shampoo:</strong> Shampoo and extract upholstery seats and carpets to remove deep stains, and odors.</li>
-          <li><strong>Floor mats cleaned and conditioned.</strong></li>
-          <li><strong>Crystal-Clear Interior Glass:</strong> Streak-free cleaning of all interior windows and mirrors for flawless visibility.</li>
-        </ul>
-      </section>
 
-      <!-- Additional Services -->
-      <section id="additional" class="service-block">
-        <h2 class="section-title">Additional Services</h2>
-        <p class="section-desc">Upgrade your vehicle with specialized services for a flawless finish. Add to a package or inquire individually.</p>
-        <div class="addons-grid">
-          <div class="addon-card">
-            <h3>Engine Bay Detail</h3>
-            <p>Clean and dress the engine compartment for a polished, professional look.</p>
-            <p class="service-block-price"><span data-price="engineBay" data-price-prefix="Starting at ">Starting at $75</span></p>
-          </div>
-          <div class="addon-card">
-            <h3>Leather Conditioner</h3>
-            <p>Condition and protect leather surfaces for a like-new feel and long-term durability.</p>
-            <p class="service-block-price"><span data-price="leatherConditioner" data-price-prefix="Starting at ">Starting at $50</span></p>
-          </div>
-          <div class="addon-card">
-            <h3>Headlight Restoration</h3>
-            <p>Restore cloudy or yellowed headlights for improved visibility and a clean look.</p>
-            <p class="service-block-price"><span data-price="headlightRestoration" data-price-prefix="Starting at ">Starting at $65</span></p>
-          </div>
-          <div class="addon-card">
-            <h3>Paint Decontamination + Clay Bar</h3>
-            <p>Remove bonded contaminants for a glass-smooth surface before sealing. For full detail package only.</p>
-            <p class="service-block-price"><span data-price="paintDecontaminationClayBar" data-price-prefix="Starting at ">Starting at $100</span></p>
+        <div id="additional" class="service-accordion-item">
+          <button type="button" class="service-accordion-trigger">
+            <span>Additional Services</span>
+            <span class="accordion-icon" aria-hidden="true">▼</span>
+          </button>
+          <div class="service-accordion-body">
+            <p>Upgrade your vehicle with specialized services. Add to a package or inquire individually.</p>
+            <div class="addons-grid" style="margin-top: var(--space-lg);">
+              <div class="addon-card">
+                <h3>Engine Bay Detail</h3>
+                <p>Clean and dress the engine compartment for a polished, professional look.</p>
+                <p class="service-block-price"><span data-price="engineBay" data-price-prefix="Starting at ">Starting at $75</span></p>
+              </div>
+              <div class="addon-card">
+                <h3>Leather Conditioner</h3>
+                <p>Condition and protect leather surfaces for a like-new feel and long-term durability.</p>
+                <p class="service-block-price"><span data-price="leatherConditioner" data-price-prefix="Starting at ">Starting at $50</span></p>
+              </div>
+              <div class="addon-card">
+                <h3>Headlight Restoration</h3>
+                <p>Restore cloudy or yellowed headlights for improved visibility and a clean look.</p>
+                <p class="service-block-price"><span data-price="headlightRestoration" data-price-prefix="Starting at ">Starting at $65</span></p>
+              </div>
+              <div class="addon-card">
+                <h3>Paint Decontamination + Clay Bar</h3>
+                <p>Remove bonded contaminants for a glass-smooth surface before sealing. For full detail package only.</p>
+                <p class="service-block-price"><span data-price="paintDecontaminationClayBar" data-price-prefix="Starting at ">Starting at $100</span></p>
+              </div>
+            </div>
+            <p class="addon-disclaimer"><strong>Note:</strong> Paint Decontamination + Clay Bar is available for full detail package only.</p>
+            <a href="booking.html" class="btn btn-primary">Book Now</a>
           </div>
         </div>
-        <p class="addon-disclaimer"><strong>Note:</strong> Paint Decontamination + Clay Bar is available for full detail package only.</p>
-      </section>
+      </div>
+
+      <!-- Maintenance packages (comparison) -->
+      <h2 class="section-title">Maintenance packages</h2>
+      <p class="section-desc">Recurring plans to keep your vehicle in top shape. Separate from one-time services; pricing scales by vehicle size.</p>
+      <p class="maintenance-disclaimer">Confirm availability and what’s included with Sopes Auto Detailing. Call <a href="tel:4849990194">(484) 999-0194</a>.</p>
+      <div class="comparison-grid">
+        <div class="comparison-card">
+          <h3>Bi-Weekly Maintenance</h3>
+          <p class="frequency">Every 2 weeks</p>
+          <p>Regular exterior wash and interior touch-up to maintain the finish and cleanliness of your vehicle between full details.</p>
+          <p class="service-block-price"><span data-price="biweekly" data-price-prefix="Starting at ">Starting at $120</span></p>
+          <a href="booking.html" class="btn btn-primary">Book Now</a>
+        </div>
+        <div class="comparison-card featured">
+          <span class="package-badge popular">Most popular</span>
+          <h3>Monthly Maintenance</h3>
+          <p class="frequency">Once per month</p>
+          <p>Monthly exterior and interior maintenance to preserve your vehicle’s condition and extend the life of your full detail.</p>
+          <p class="service-block-price"><span data-price="monthly" data-price-prefix="Starting at ">Starting at $140</span></p>
+          <a href="booking.html" class="btn btn-primary">Book Now</a>
+        </div>
+        <div class="comparison-card">
+          <span class="package-badge value">Best value</span>
+          <h3>Bi-Monthly Maintenance</h3>
+          <p class="frequency">Every 2 months</p>
+          <p>Quarterly-level care to keep your vehicle in top shape with less frequent visits.</p>
+          <p class="service-block-price"><span data-price="bimonthly" data-price-prefix="Starting at ">Starting at $160</span></p>
+          <a href="booking.html" class="btn btn-primary">Book Now</a>
+        </div>
+      </div>
 
       <div class="cta-box">
         <p>Call for a free quote: <a href="tel:4849990194">(484) 999-0194</a></p>
@@ -156,7 +178,6 @@
           <a href="https://facebook.com/share/1AEvjMZHsa/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook</a>
           <a href="https://instagram.com/sopesautodetailing?igsh=Y3BjMGs1MzUzaGtv" target="_blank" rel="noopener">Instagram</a>
         </div>
-        <p class="footer-payment">We accept Maestro, Mastercard, PayPal, Visa, Discover</p>
         <p class="footer-copy">&copy; Sopes Auto Detailing</p>
       </div>
     </div>

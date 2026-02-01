@@ -1,6 +1,5 @@
 /* ========================================
-   Sopes Auto Detailing — Redesigned
-   Brand colors preserved from Payhip store.
+   Sopes Auto Detailing
    ======================================== */
 
 :root {
@@ -281,6 +280,139 @@ a:hover { color: var(--accent-hover); }
   border-color: var(--accent);
 }
 
+/* ========== Vehicle size modal ========== */
+.vehicle-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-xl);
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}
+
+.vehicle-modal[hidden] {
+  display: none;
+  pointer-events: none;
+}
+
+.vehicle-modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+}
+
+.vehicle-modal-content {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  padding: var(--space-2xl);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.vehicle-modal-content h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: var(--space-sm);
+}
+
+.vehicle-modal-desc {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  margin-bottom: var(--space-xl);
+}
+
+.vehicle-modal-options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+
+.vehicle-modal-btn {
+  display: block;
+  width: 100%;
+  padding: var(--space-md) var(--space-lg);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  font-family: var(--font-sans);
+  color: var(--text-muted);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: left;
+}
+
+.vehicle-modal-btn:hover {
+  color: var(--text);
+  border-color: var(--border-light);
+}
+
+.vehicle-modal-btn.active {
+  color: #0a0a0b;
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.vehicle-modal-close {
+  position: absolute;
+  top: var(--space-md);
+  right: var(--space-md);
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: var(--radius);
+  transition: var(--transition);
+}
+
+.vehicle-modal-close:hover {
+  color: var(--text);
+  background: var(--bg-elevated);
+}
+
+/* ========== Header vehicle trigger ========== */
+.header-vehicle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-sm) var(--space-md);
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-family: var(--font-sans);
+  color: var(--text-muted);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.header-vehicle-btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+#header-vehicle-label {
+  color: var(--text);
+}
+
 /* ========== Price display ========== */
 .price-display {
   font-size: 1.125rem;
@@ -296,6 +428,151 @@ a:hover { color: var(--accent-hover); }
 
 .service-block-price {
   margin-top: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+body:not(.vehicle-selected) [data-price].price-placeholder-text {
+  color: var(--text-muted);
+}
+
+/* ========== Expandable service cards ========== */
+.service-accordion {
+  margin-bottom: var(--space-xl);
+}
+
+.service-accordion-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-md);
+  overflow: hidden;
+  transition: border-color var(--transition);
+}
+
+.service-accordion-item:hover {
+  border-color: var(--border-light);
+}
+
+.service-accordion-item.is-open {
+  border-color: var(--accent);
+}
+
+.service-accordion-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  width: 100%;
+  padding: var(--space-xl);
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: var(--font-sans);
+  color: var(--text);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: var(--transition);
+}
+
+.service-accordion-trigger:hover {
+  color: var(--accent);
+}
+
+.service-accordion-trigger .price-tag {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.service-accordion-trigger .accordion-icon {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  transition: transform 0.2s ease;
+}
+
+.service-accordion-item.is-open .accordion-icon {
+  transform: rotate(180deg);
+}
+
+.service-accordion-body {
+  display: none;
+  padding: 0 var(--space-xl) var(--space-xl);
+}
+
+.service-accordion-item.is-open .service-accordion-body {
+  display: block;
+}
+
+.service-accordion-body .package-list-title {
+  margin-top: 0;
+  margin-bottom: var(--space-md);
+}
+
+/* ========== Comparison / package badges ========== */
+.package-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius);
+  margin-bottom: var(--space-sm);
+}
+
+.package-badge.popular {
+  background: var(--accent-muted);
+  color: var(--accent);
+}
+
+.package-badge.value {
+  background: var(--accent-muted);
+  color: var(--accent);
+}
+
+.comparison-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-xl);
+  margin-bottom: var(--space-2xl);
+}
+
+.comparison-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  transition: border-color var(--transition);
+  position: relative;
+}
+
+.comparison-card.featured {
+  border-color: var(--accent);
+}
+
+.comparison-card h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: var(--space-sm);
+}
+
+.comparison-card .frequency {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin-bottom: var(--space-md);
+}
+
+.comparison-card p {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  margin-bottom: var(--space-lg);
+}
+
+.comparison-card .service-block-price {
   margin-bottom: var(--space-md);
 }
 
@@ -538,11 +815,6 @@ a:hover { color: var(--accent-hover); }
 }
 
 .footer-links a:hover { color: var(--text); }
-
-.footer-payment {
-  font-size: 0.8125rem;
-  color: var(--text-subtle);
-}
 
 .footer-copy {
   font-size: 0.875rem;
@@ -962,6 +1234,11 @@ a:hover { color: var(--accent-hover); }
 
   .nav.is-open { display: flex; }
 
+  .header-vehicle-btn {
+    margin-left: auto;
+    margin-right: var(--space-sm);
+  }
+
   .nav-toggle { display: flex; }
 
   .gallery-grid { grid-template-columns: repeat(2, 1fr); }
@@ -980,4 +1257,6 @@ a:hover { color: var(--accent-hover); }
   .header-inner { padding-left: var(--space-lg); padding-right: var(--space-lg); }
   .section { padding: var(--space-3xl) 0; }
   .hero { min-height: 80vh; padding: var(--space-3xl) var(--space-lg); }
+  .vehicle-modal-content { padding: var(--space-xl); }
+  .service-accordion-trigger { flex-direction: column; align-items: flex-start; }
 }
