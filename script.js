@@ -1,18 +1,19 @@
 /**
- * Sopes Auto Detailing — Cookie banner
+ * Sopes Auto Detailing
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  const banner = document.getElementById('cookie-banner');
-  const acceptBtn = document.getElementById('cookie-accept');
+  initNavToggle();
+});
 
-  if (acceptBtn && banner) {
-    if (localStorage.getItem('cookies-accepted')) {
-      banner.classList.add('hidden');
-    }
-    acceptBtn.addEventListener('click', () => {
-      localStorage.setItem('cookies-accepted', 'true');
-      banner.classList.add('hidden');
+function initNavToggle() {
+  const toggle = document.querySelector('.nav-toggle');
+  const nav = document.querySelector('.nav');
+
+  if (toggle && nav) {
+    toggle.addEventListener('click', () => {
+      nav.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', nav.classList.contains('is-open'));
     });
   }
-});
+}
