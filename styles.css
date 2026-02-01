@@ -522,6 +522,17 @@ body:not(.vehicle-selected) [data-price].price-placeholder-text {
   color: var(--accent);
 }
 
+.package-badge.top-seller {
+  background: rgba(180, 120, 0, 0.15);
+  color: #b07800;
+}
+
+.package-note {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: var(--space-md);
+}
+
 .comparison-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));

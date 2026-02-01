@@ -1,10 +1,8 @@
 /**
  * Sopes Auto Detailing — Pricing by vehicle size
  *
- * Base prices below are placeholders for the dynamic pricing UI.
- * Replace with real prices from Sopes Auto Detailing once confirmed.
- *
  * Vehicle order: smallest to largest (cheapest → most expensive).
+ * Packages use exact prices per vehicle tier; add-ons use base × multiplier.
  */
 
 window.SOPES_PRICING = {
@@ -16,17 +14,39 @@ window.SOPES_PRICING = {
     { id: 'large', label: 'Large SUV / Van', multiplier: 1.5 }
   ],
 
-  /* Base prices (sedan). REPLACE WITH REAL PRICES once confirmed. */
+  /* Main packages — exact price per vehicle size (Coupes/Sedans, Midsize SUV, Large SUV/Truck) */
+  packages: {
+    fullDetail: {
+      coupe: 269.99,
+      sedan: 269.99,
+      suv: 299.79,
+      truck: 319.99,
+      large: 319.99
+    },
+    exteriorOnly: {
+      coupe: 79.99,
+      sedan: 79.99,
+      suv: 98.89,
+      truck: 114.89,
+      large: 114.89
+    },
+    interiorOnly: {
+      coupe: 189.99,
+      sedan: 189.99,
+      suv: 219.79,
+      truck: 269.89,
+      large: 269.89
+    }
+  },
+
+  /* Add-ons — base price (sedan), then × vehicle multiplier */
   services: {
-    exterior: 150,
-    interior: 150,
     engineBay: 75,
     leatherConditioner: 50,
     headlightRestoration: 65,
     paintDecontaminationClayBar: 100
   },
 
-  /* Maintenance packages. Placeholders; confirm with business. */
   maintenance: {
     biweekly: 120,
     monthly: 140,

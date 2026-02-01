@@ -59,16 +59,23 @@ function getMultiplier() {
 
 function getPrice(serviceKey) {
   if (!window.SOPES_PRICING) return null;
+  const packages = window.SOPES_PRICING.packages || {};
   const services = window.SOPES_PRICING.services || {};
   const maintenance = window.SOPES_PRICING.maintenance || {};
+  const vehicleId = getVehicleSize();
+  if (packages[serviceKey] && typeof packages[serviceKey] === 'object' && packages[serviceKey][vehicleId] != null) {
+    return Number(packages[serviceKey][vehicleId]);
+  }
   const basePrice = services[serviceKey] !== undefined ? services[serviceKey] : maintenance[serviceKey];
   if (basePrice == null) return null;
-  return Math.round(basePrice * getMultiplier());
+  return Math.round(basePrice * getMultiplier() * 100) / 100;
 }
 
 function formatPrice(amount) {
   if (amount == null) return '—';
-  return '$' + String(amount);
+  const n = Number(amount);
+  if (n % 1 === 0) return '$' + String(n);
+  return '$' + n.toFixed(2);
 }
 
 function updateAllPricing() {
