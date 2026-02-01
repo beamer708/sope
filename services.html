@@ -12,15 +12,15 @@
 <body>
   <header class="header">
     <div class="header-inner container">
-      <a href="index.html" class="logo">Sopes Auto Detailing</a>
+      <a href="index.html" class="logo"><img src="photos/Logo.png" alt="Sopes Auto Detailing"></a>
       <nav class="nav">
-        <a href="index.html"><svg class="icon icon--nav" aria-hidden="true"><use href="icons.svg#icon-home"/></svg>Home</a>
-        <a href="services.html"><svg class="icon icon--nav" aria-hidden="true"><use href="icons.svg#icon-services"/></svg>Services</a>
-        <a href="maintenance.html"><svg class="icon icon--nav" aria-hidden="true"><use href="icons.svg#icon-maintenance"/></svg>Maintenance</a>
-        <a href="gallery.html"><svg class="icon icon--nav" aria-hidden="true"><use href="icons.svg#icon-gallery"/></svg>Gallery</a>
-        <a href="areas.html"><svg class="icon icon--nav" aria-hidden="true"><use href="icons.svg#icon-areas"/></svg>Areas</a>
-        <a href="policies.html"><svg class="icon icon--nav" aria-hidden="true"><use href="icons.svg#icon-policies"/></svg>Policies / FAQ</a>
-        <a href="booking.html"><svg class="icon icon--nav" aria-hidden="true"><use href="icons.svg#icon-booking"/></svg>Booking</a>
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="maintenance.html">Maintenance</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="areas.html">Areas</a>
+        <a href="policies.html">Policies / FAQ</a>
+        <a href="booking.html">Booking</a>
       </nav>
       <button type="button" class="header-vehicle-btn" id="header-vehicle-btn" aria-label="Select vehicle size"><span id="header-vehicle-label">Select</span></button>
       <button class="nav-toggle" aria-label="Menu">
@@ -34,78 +34,116 @@
   <main class="page">
     <div class="container">
       <header class="page-head">
-        <h1 class="page-title"><svg class="icon icon--section" aria-hidden="true"><use href="icons.svg#icon-services"/></svg>Services &amp; Packages</h1>
+        <h1 class="page-title">Services &amp; Packages</h1>
         <p class="page-desc">One-time detailing services and recurring maintenance packages. Select your vehicle size in the header to view pricing. Call for a free quote: <a href="tel:4849990194">(484) 999-0194</a>.</p>
       </header>
 
       <!-- One-time services (expandable) -->
-      <h2 class="section-title"><svg class="icon icon--section" aria-hidden="true"><use href="icons.svg#icon-car"/></svg>One-time services</h2>
+      <h2 class="section-title">One-time services</h2>
       <p class="section-desc">Select a service to see what’s included and pricing. Expand any card for details.</p>
       <div class="service-accordion">
         <div id="full-detail" class="service-accordion-item">
           <button type="button" class="service-accordion-trigger">
-            <span>Full Interior Detail and Exterior Wash &amp; Protection</span>
-            <span class="package-badge top-seller">Top Seller</span>
+            <span>Full Detail Package</span>
             <span class="price-tag" data-price="fullDetail" data-price-prefix="Starting at ">Starting at $269.99</span>
-            <span class="accordion-icon" aria-hidden="true">▼</span>
           </button>
           <div class="service-accordion-body">
-            <p class="package-note">Price varies by size and condition. Additional pet hair fees may apply.</p>
-            <h3 class="package-list-title">Exterior</h3>
+            <p class="package-subtitle">Complete interior and exterior reset</p>
+            <p class="package-note">Pricing varies by size and condition. Additional pet hair fees may apply.</p>
+            <h3 class="package-list-title">Includes</h3>
+            <p class="package-list-title">Exterior:</p>
             <ul class="package-list">
-              <li>Touchless pre-foam wash, in-depth rinse, wheel &amp; tire cleaning, bug &amp; tar treatment, foam wash, durable sealant, exterior plastics restoration, door jamb cleaning.</li>
+              <li>Touchless pre-foam wash</li>
+              <li>In-depth rinse</li>
+              <li>Wheel &amp; tire cleaning</li>
+              <li>Bug &amp; tar treatment</li>
+              <li>Foam wash</li>
+              <li>Durable paint sealant</li>
+              <li>Exterior plastic restoration</li>
+              <li>Door jamb cleaning</li>
             </ul>
-            <h3 class="package-list-title">Interior</h3>
+            <p class="package-list-title">Interior:</p>
             <ul class="package-list">
-              <li>Steam cleaning, vacuuming, interior cleaning &amp; conditioning, carpet &amp; fabric seat shampooing, window cleaning, tire shine.</li>
+              <li>Thorough vacuuming</li>
+              <li>Steam cleaning</li>
+              <li>Interior cleaning &amp; conditioning</li>
+              <li>Carpet &amp; fabric seat shampoo</li>
+              <li>Window cleaning</li>
+              <li>Tire shine</li>
             </ul>
             <h3 class="package-list-title">Benefits</h3>
-            <p>Comprehensive clean, long-lasting shine, enhanced aesthetics, improved resale value, healthier interior, odor elimination, convenience.</p>
+            <ul class="package-list">
+              <li>Comprehensive deep clean</li>
+              <li>Long-lasting shine &amp; protection</li>
+              <li>Improved aesthetics &amp; resale value</li>
+              <li>Healthier, odor-free interior</li>
+              <li>Maximum convenience</li>
+            </ul>
             <a href="booking.html" class="btn btn-primary">Book Now</a>
           </div>
         </div>
 
         <div id="exterior-only" class="service-accordion-item">
           <button type="button" class="service-accordion-trigger">
-            <span>Exterior Only: Wash, Clay, and Seal</span>
+            <span>Exterior Only Package</span>
             <span class="price-tag" data-price="exteriorOnly" data-price-prefix="Starting at ">Starting at $79.99</span>
-            <span class="accordion-icon" aria-hidden="true">▼</span>
           </button>
           <div class="service-accordion-body">
+            <p class="package-subtitle">Maintenance wash with protection</p>
             <h3 class="package-list-title">Includes</h3>
             <ul class="package-list">
-              <li>Touchless pre-foam wash, in-depth rinse, wheel &amp; tire cleaning, foam wash, iron remover, clay bar treatment, durable sealant, window cleaning, tire shine, exterior plastics protection.</li>
+              <li>Touchless pre-foam wash &amp; rinse</li>
+              <li>Wheel &amp; tire cleaning</li>
+              <li>Foam wash</li>
+              <li>Spray paint sealant</li>
+              <li>Window cleaning</li>
+              <li>Tire shine</li>
+              <li>Exterior plastic protection</li>
             </ul>
             <h3 class="package-list-title">Benefits</h3>
-            <p>Smooth surface, durable protection, enhanced appearance, ease of maintenance, cost-effective, time-saving.</p>
+            <ul class="package-list">
+              <li>Clean, glossy appearance</li>
+              <li>Light paint protection</li>
+              <li>Easier future maintenance</li>
+              <li>Time-efficient &amp; cost-effective</li>
+            </ul>
             <a href="booking.html" class="btn btn-primary">Book Now</a>
           </div>
         </div>
 
         <div id="interior-only" class="service-accordion-item">
           <button type="button" class="service-accordion-trigger">
-            <span>Interior Only: Full Interior Detail</span>
+            <span>Interior Only Package</span>
             <span class="price-tag" data-price="interiorOnly" data-price-prefix="Starting at ">Starting at $189.99</span>
-            <span class="accordion-icon" aria-hidden="true">▼</span>
           </button>
           <div class="service-accordion-body">
-            <p class="package-note">Price depends on size and condition. Small additional pet hair fees apply.</p>
+            <p class="package-subtitle">Deep interior cleaning and refresh</p>
+            <p class="package-note">Pricing depends on size and condition. Additional pet hair fees may apply.</p>
             <h3 class="package-list-title">Includes</h3>
             <ul class="package-list">
-              <li>Vacuuming, steam cleaning, interior cleaning &amp; conditioning, carpet &amp; seat shampooing, dashboard &amp; console cleaning, window cleaning, vents &amp; crevices detailed.</li>
+              <li>Full vacuuming</li>
+              <li>Steam cleaning</li>
+              <li>Interior cleaning &amp; conditioning</li>
+              <li>Carpet &amp; seat shampooing</li>
+              <li>Dashboard &amp; console cleaning</li>
+              <li>Window cleaning</li>
+              <li>Vents &amp; crevices detailed</li>
             </ul>
             <h3 class="package-list-title">Benefits</h3>
-            <p>Healthier environment, restored freshness, odor elimination, enhanced comfort, improved appearance, increased resale value, protection against wear.</p>
+            <ul class="package-list">
+              <li>Healthier interior environment</li>
+              <li>Odor elimination</li>
+              <li>Improved comfort &amp; cleanliness</li>
+              <li>Increased resale value</li>
+            </ul>
             <a href="booking.html" class="btn btn-primary">Book Now</a>
           </div>
         </div>
       </div>
 
-      <!-- Maintenance packages (comparison) -->
-      <h2 class="section-title"><svg class="icon icon--section" aria-hidden="true"><use href="icons.svg#icon-maintenance"/></svg>Maintenance packages</h2>
-      <p class="section-desc">Recurring plans to keep your vehicle in top shape. Separate from one-time services; pricing scales by vehicle size.</p>
-      <p class="maintenance-disclaimer">Confirm availability and what’s included with Sopes Auto Detailing. Call <a href="tel:4849990194">(484) 999-0194</a>.</p>
-      <div class="comparison-grid">
+      <p class="section-desc" style="margin-top: var(--space-xl);">Maintenance packages (Weekly, Bi-Weekly, Monthly) are available after a Full Detail. See our <a href="maintenance.html">Maintenance</a> page.</p>
+      <p class="maintenance-disclaimer" style="display:none;">Confirm availability and what’s included with Sopes Auto Detailing. Call <a href="tel:4849990194">(484) 999-0194</a>.</p>
+      <div class="comparison-grid" style="display: none;">
         <div class="comparison-card">
           <h3>Bi-Weekly Maintenance</h3>
           <p class="frequency">Every 2 weeks</p>
@@ -143,17 +181,17 @@
       <div class="footer-grid">
         <span class="footer-brand">Sopes Auto Detailing</span>
         <nav class="footer-links">
-          <a href="index.html"><svg class="icon icon--nav" aria-hidden="true"><use href="icons.svg#icon-home"/></svg>Home</a>
-          <a href="services.html"><svg class="icon icon--nav" aria-hidden="true"><use href="icons.svg#icon-services"/></svg>Services</a>
-          <a href="maintenance.html"><svg class="icon icon--nav" aria-hidden="true"><use href="icons.svg#icon-maintenance"/></svg>Maintenance</a>
-          <a href="gallery.html"><svg class="icon icon--nav" aria-hidden="true"><use href="icons.svg#icon-gallery"/></svg>Gallery</a>
-          <a href="areas.html"><svg class="icon icon--nav" aria-hidden="true"><use href="icons.svg#icon-areas"/></svg>Areas</a>
-          <a href="policies.html"><svg class="icon icon--nav" aria-hidden="true"><use href="icons.svg#icon-policies"/></svg>Policies / FAQ</a>
-          <a href="booking.html"><svg class="icon icon--nav" aria-hidden="true"><use href="icons.svg#icon-booking"/></svg>Book Now</a>
+          <a href="index.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="maintenance.html">Maintenance</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="areas.html">Areas</a>
+          <a href="policies.html">Policies / FAQ</a>
+          <a href="booking.html">Book Now</a>
         </nav>
         <div class="footer-social">
-          <a href="https://facebook.com/share/1AEvjMZHsa/?mibextid=wwXIfr" target="_blank" rel="noopener"><svg class="icon icon--social" aria-hidden="true"><use href="icons.svg#icon-facebook"/></svg>Facebook</a>
-          <a href="https://instagram.com/sopesautodetailing?igsh=Y3BjMGs1MzUzaGtv" target="_blank" rel="noopener"><svg class="icon icon--social" aria-hidden="true"><use href="icons.svg#icon-instagram"/></svg>Instagram</a>
+          <a href="https://facebook.com/share/1AEvjMZHsa/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://instagram.com/sopesautodetailing?igsh=Y3BjMGs1MzUzaGtv" target="_blank" rel="noopener">Instagram</a>
         </div>
         <p class="footer-copy">&copy; Sopes Auto Detailing</p>
       </div>

@@ -61,15 +61,24 @@ function getMultiplier() {
 function getPrice(serviceKey) {
   if (!window.SOPES_PRICING) return null;
   const packages = window.SOPES_PRICING.packages || {};
-  const services = window.SOPES_PRICING.services || {};
   const maintenance = window.SOPES_PRICING.maintenance || {};
   const vehicleId = getVehicleSize();
   if (packages[serviceKey] && typeof packages[serviceKey] === 'object' && packages[serviceKey][vehicleId] != null) {
     return Number(packages[serviceKey][vehicleId]);
   }
-  const basePrice = services[serviceKey] !== undefined ? services[serviceKey] : maintenance[serviceKey];
-  if (basePrice == null) return null;
-  return Math.round(basePrice * getMultiplier() * 100) / 100;
+  if (maintenance[serviceKey] && typeof maintenance[serviceKey] === 'object' && maintenance[serviceKey][vehicleId] != null) {
+    return Number(maintenance[serviceKey][vehicleId]);
+  }
+  return null;
+}
+
+function getPriceRange(rangeKey) {
+  if (!window.SOPES_PRICING || !window.SOPES_PRICING.priceRanges) return null;
+  const ranges = window.SOPES_PRICING.priceRanges[rangeKey];
+  if (!ranges || typeof ranges !== 'object') return null;
+  const vehicleId = getVehicleSize();
+  const range = ranges[vehicleId];
+  return range != null ? String(range) : null;
 }
 
 function formatPrice(amount) {
@@ -92,6 +101,18 @@ function updateAllPricing() {
       el.textContent = formatted;
     }
   });
+  document.querySelectorAll('[data-price-range]').forEach(el => {
+    const key = el.getAttribute('data-price-range');
+    const range = getPriceRange(key);
+    el.classList.remove('price-placeholder-text');
+    if (range) {
+      const prefix = el.hasAttribute('data-price-prefix') ? (el.getAttribute('data-price-prefix') || '') : '';
+      el.textContent = prefix + '$' + range;
+    } else {
+      el.textContent = 'Select vehicle size to view pricing';
+      el.classList.add('price-placeholder-text');
+    }
+  });
 }
 
 function updatePriceVisibility() {
@@ -102,6 +123,10 @@ function updatePriceVisibility() {
   } else {
     document.body.classList.remove('vehicle-selected');
     document.querySelectorAll('[data-price]').forEach(el => {
+      el.textContent = 'Select vehicle size to view pricing';
+      el.classList.add('price-placeholder-text');
+    });
+    document.querySelectorAll('[data-price-range]').forEach(el => {
       el.textContent = 'Select vehicle size to view pricing';
       el.classList.add('price-placeholder-text');
     });
@@ -169,9 +194,8 @@ function injectVehicleModal() {
       '<div class="vehicle-modal-options">' +
         '<button type="button" class="vehicle-modal-btn" data-vehicle-size="coupe">Coupe</button>' +
         '<button type="button" class="vehicle-modal-btn" data-vehicle-size="sedan">Sedan</button>' +
-        '<button type="button" class="vehicle-modal-btn" data-vehicle-size="suv">SUV</button>' +
-        '<button type="button" class="vehicle-modal-btn" data-vehicle-size="truck">Truck</button>' +
-        '<button type="button" class="vehicle-modal-btn" data-vehicle-size="large">Large SUV / Van</button>' +
+        '<button type="button" class="vehicle-modal-btn" data-vehicle-size="suv">Midsize SUV</button>' +
+        '<button type="button" class="vehicle-modal-btn" data-vehicle-size="truck">Large SUV / Truck</button>' +
       '</div>' +
     '</div>';
   document.body.appendChild(modal);

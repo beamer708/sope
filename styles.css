@@ -58,54 +58,6 @@ a {
 
 a:hover { color: var(--accent-hover); }
 
-/* ========== Icons (Streamline Bold style) ========== */
-.icon {
-  display: inline-block;
-  width: 1.25em;
-  height: 1.25em;
-  flex-shrink: 0;
-  vertical-align: -0.25em;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.icon--nav {
-  width: 1rem;
-  height: 1rem;
-  vertical-align: -0.15em;
-}
-
-.icon--section {
-  width: 1.5rem;
-  height: 1.5rem;
-  margin-right: 0.35rem;
-  vertical-align: -0.35em;
-  color: var(--accent);
-}
-
-.icon--btn {
-  width: 1.125rem;
-  height: 1.125rem;
-  margin-right: 0.35rem;
-  vertical-align: -0.2em;
-}
-
-.icon--social {
-  width: 1.125rem;
-  height: 1.125rem;
-  margin-right: 0.25rem;
-  vertical-align: -0.2em;
-}
-
-.icon-wrap {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-}
-
 .container {
   width: 100%;
   max-width: var(--container);
@@ -135,10 +87,19 @@ a:hover { color: var(--accent-hover); }
 }
 
 .logo {
+  display: flex;
+  align-items: center;
   font-size: 1rem;
   font-weight: 600;
   color: var(--text);
   letter-spacing: -0.02em;
+}
+
+.logo img {
+  max-height: 2.5rem;
+  width: auto;
+  display: block;
+  object-fit: contain;
 }
 
 .logo:hover { color: var(--text); }
@@ -490,7 +451,8 @@ body.vehicle-selected .header-vehicle-change {
   margin-bottom: var(--space-md);
 }
 
-body:not(.vehicle-selected) [data-price].price-placeholder-text {
+body:not(.vehicle-selected) [data-price].price-placeholder-text,
+body:not(.vehicle-selected) [data-price-range].price-placeholder-text {
   color: var(--text-muted);
 }
 
@@ -545,17 +507,6 @@ body:not(.vehicle-selected) [data-price].price-placeholder-text {
   color: var(--accent);
 }
 
-.service-accordion-trigger .accordion-icon {
-  flex-shrink: 0;
-  width: 1.25rem;
-  height: 1.25rem;
-  transition: transform 0.2s ease;
-}
-
-.service-accordion-item.is-open .accordion-icon {
-  transform: rotate(180deg);
-}
-
 .service-accordion-body {
   display: none;
   padding: 0 var(--space-xl) var(--space-xl);
@@ -595,6 +546,13 @@ body:not(.vehicle-selected) [data-price].price-placeholder-text {
 .package-badge.top-seller {
   background: rgba(180, 120, 0, 0.15);
   color: #b07800;
+}
+
+.package-subtitle {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  margin-bottom: var(--space-sm);
+  font-style: italic;
 }
 
 .package-note {
@@ -1194,6 +1152,19 @@ body:not(.vehicle-selected) [data-price].price-placeholder-text {
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: var(--space-xl);
   margin-bottom: var(--space-2xl);
+}
+
+.maintenance-includes {
+  margin-bottom: var(--space-2xl);
+}
+
+.maintenance-includes .section-title {
+  margin-top: var(--space-lg);
+  margin-bottom: var(--space-sm);
+}
+
+.maintenance-includes .section-title:first-child {
+  margin-top: 0;
 }
 
 .maintenance-card {
