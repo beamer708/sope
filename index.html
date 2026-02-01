@@ -15,12 +15,12 @@
       <a href="index.html" class="logo">Sopes Auto Detailing</a>
       <nav class="nav">
         <a href="index.html">Home</a>
-        <a href="index.html#about">About</a>
-        <a href="services.html">Packages</a>
-        <a href="additional-services.html">Additional Services</a>
-        <a href="policies.html">Policies</a>
-        <a href="booking.html">Booking</a>
-        <a href="contact.html">Contact</a>
+        <a href="services.html">Services</a>
+        <a href="maintenance.html">Maintenance</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="areas.html">Areas</a>
+        <a href="policies.html">Policies / FAQ</a>
+        <a href="booking.html" class="nav-cta">Book Now</a>
       </nav>
       <button class="nav-toggle" aria-label="Menu">
         <span></span>
@@ -38,8 +38,20 @@
         <p class="hero-badge">Professional auto detailing</p>
         <h1 class="hero-title">Sopes Auto Detailing</h1>
         <p class="hero-desc">Expert-level care and attention to every detail. We offer high-quality interior and exterior services designed to enhance and protect your vehicle. All at your convenience.</p>
+        <div class="vehicle-size-selector">
+          <p class="vehicle-size-label">Select your vehicle size for pricing:</p>
+          <p class="vehicle-size-current">Sedan</p>
+          <div class="vehicle-size-buttons">
+            <button type="button" class="vehicle-size-btn active" data-vehicle-size="sedan" aria-pressed="true">Sedan</button>
+            <button type="button" class="vehicle-size-btn" data-vehicle-size="coupe" aria-pressed="false">Coupe</button>
+            <button type="button" class="vehicle-size-btn" data-vehicle-size="suv" aria-pressed="false">SUV</button>
+            <button type="button" class="vehicle-size-btn" data-vehicle-size="truck" aria-pressed="false">Truck</button>
+            <button type="button" class="vehicle-size-btn" data-vehicle-size="large" aria-pressed="false">Large SUV / Van</button>
+          </div>
+        </div>
         <div class="hero-actions">
-          <a href="booking.html" class="btn btn-primary">Get a Free Quote</a>
+          <a href="services.html" class="btn btn-primary">View Services</a>
+          <a href="booking.html" class="btn btn-outline">Book Now</a>
           <a href="tel:4849990194" class="btn btn-outline">(484) 999-0194</a>
         </div>
       </div>
@@ -49,8 +61,8 @@
       <div class="container">
         <div class="about-grid">
           <div class="about-media">
-            <img src="photos/about.jpg" alt="Sopes Auto Detailing" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-            <div class="about-media-placeholder" style="display:none;"><span>About</span></div>
+            <img src="photos/about.jpg" alt="Sopes Auto Detailing — professional detailing" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="about-media-placeholder" style="display:none;"><span>Replace: About / team or vehicle detail</span></div>
           </div>
           <div class="about-body">
             <p class="section-label">About</p>
@@ -66,42 +78,45 @@
     <section id="services" class="section">
       <div class="container">
         <p class="section-label">What we offer</p>
-        <h2 class="section-title">Services</h2>
-        <p class="section-desc">Choose from our professional packages or add specialized services for a complete detail.</p>
+        <h2 class="section-title">Services overview</h2>
+        <p class="section-desc">Choose from our professional packages or add specialized services for a complete detail. Pricing scales by vehicle size.</p>
         <div class="services-cards">
           <a href="services.html#exterior" class="service-card">
             <div class="service-card-media">
               <img src="photos/1.jpg" alt="Exterior Package" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-              <div class="service-card-placeholder" style="display:none;"><span>Exterior</span></div>
+              <div class="service-card-placeholder" style="display:none;"><span>Replace: Exterior detail photo</span></div>
             </div>
             <div class="service-card-body">
               <h3>Exterior Package</h3>
               <p>Restore and protect your vehicle's exterior with a deep clean and professional finish. Perfect for maintaining shine, boosting curb appeal, and preserving your paint's condition for long-term durability.</p>
-              <span class="service-card-link">View Details →</span>
+              <span class="service-card-link">View details & pricing →</span>
             </div>
           </a>
           <a href="services.html#interior" class="service-card">
             <div class="service-card-media">
               <img src="photos/2.jpg" alt="Interior Package" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-              <div class="service-card-placeholder" style="display:none;"><span>Interior</span></div>
+              <div class="service-card-placeholder" style="display:none;"><span>Replace: Interior detail photo</span></div>
             </div>
             <div class="service-card-body">
               <h3>Interior Package</h3>
               <p>Revitalize your car's interior with deep cleaning and sanitization. We remove stains, eliminate odors, and leave every surface spotless for a fresh, like-new feel.</p>
-              <span class="service-card-link">View Details →</span>
+              <span class="service-card-link">View details & pricing →</span>
             </div>
           </a>
-          <a href="additional-services.html" class="service-card">
+          <a href="services.html#additional" class="service-card">
             <div class="service-card-media">
               <img src="photos/3.jpg" alt="Additional Services" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-              <div class="service-card-placeholder" style="display:none;"><span>Add-Ons</span></div>
+              <div class="service-card-placeholder" style="display:none;"><span>Replace: Add-on service photo</span></div>
             </div>
             <div class="service-card-body">
               <h3>Additional Services</h3>
               <p>Upgrade your vehicle with specialized services like upholstery shampoo, headlight restoration, clay bar treatment, polishing, and engine bay cleaning for a flawless finish.</p>
-              <span class="service-card-link">View Details →</span>
+              <span class="service-card-link">View details & pricing →</span>
             </div>
           </a>
+        </div>
+        <div style="text-align: center; margin-top: var(--space-xl);">
+          <a href="services.html" class="btn btn-primary">See all services & pricing</a>
         </div>
       </div>
     </section>
@@ -110,7 +125,11 @@
       <div class="container">
         <p class="section-label">Our work</p>
         <h2 class="section-title">Gallery</h2>
+        <p class="section-desc">Professional service imagery from our detailing work.</p>
         <div class="gallery-grid" id="gallery-grid"></div>
+        <div style="text-align: center; margin-top: var(--space-xl);">
+          <a href="gallery.html" class="btn btn-outline">View full gallery</a>
+        </div>
       </div>
     </section>
 
@@ -120,6 +139,7 @@
           <p class="contact-strip-title"><strong>Contact us here!</strong></p>
           <a href="tel:4849990194" class="contact-strip-phone">(484) 999-0194</a>
           <p class="contact-strip-note">Call for a free quote</p>
+          <a href="booking.html" class="btn btn-primary" style="margin-top: var(--space-md);">Book Now</a>
         </div>
       </div>
     </section>
@@ -131,11 +151,12 @@
         <span class="footer-brand">Sopes Auto Detailing</span>
         <nav class="footer-links">
           <a href="index.html">Home</a>
-          <a href="services.html">Packages</a>
-          <a href="additional-services.html">Additional Services</a>
-          <a href="policies.html">Policies</a>
-          <a href="booking.html">Booking</a>
-          <a href="contact.html">Contact</a>
+          <a href="services.html">Services</a>
+          <a href="maintenance.html">Maintenance</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="areas.html">Areas</a>
+          <a href="policies.html">Policies / FAQ</a>
+          <a href="booking.html">Book Now</a>
         </nav>
         <div class="footer-social">
           <a href="https://facebook.com/share/1AEvjMZHsa/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook</a>
@@ -147,6 +168,7 @@
     </div>
   </footer>
 
+  <script src="pricing-data.js"></script>
   <script src="script.js"></script>
   <script>
     (function() {

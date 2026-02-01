@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Packages | Sopes Auto Detailing</title>
+  <title>Services | Sopes Auto Detailing</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -15,12 +15,12 @@
       <a href="index.html" class="logo">Sopes Auto Detailing</a>
       <nav class="nav">
         <a href="index.html">Home</a>
-        <a href="index.html#about">About</a>
-        <a href="services.html">Packages</a>
-        <a href="additional-services.html">Additional Services</a>
-        <a href="policies.html">Policies</a>
-        <a href="booking.html">Booking</a>
-        <a href="contact.html">Contact</a>
+        <a href="services.html">Services</a>
+        <a href="maintenance.html">Maintenance</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="areas.html">Areas</a>
+        <a href="policies.html">Policies / FAQ</a>
+        <a href="booking.html" class="nav-cta">Book Now</a>
       </nav>
       <button class="nav-toggle" aria-label="Menu">
         <span></span>
@@ -33,20 +33,33 @@
   <main class="page">
     <div class="container">
       <header class="page-head">
-        <h1 class="page-title">Packages</h1>
-        <p class="page-desc">Professional detailing packages designed to restore and protect your vehicle. Call for a free quote.</p>
+        <h1 class="page-title">Services</h1>
+        <p class="page-desc">All services from Sopes Auto Detailing. Pricing scales by vehicle size. Call for a free quote: <a href="tel:4849990194">(484) 999-0194</a>.</p>
+        <div class="vehicle-size-selector" style="margin-top: var(--space-xl);">
+          <p class="vehicle-size-label">Vehicle size (for pricing below):</p>
+          <p class="vehicle-size-current">Sedan</p>
+          <div class="vehicle-size-buttons">
+            <button type="button" class="vehicle-size-btn active" data-vehicle-size="sedan" aria-pressed="true">Sedan</button>
+            <button type="button" class="vehicle-size-btn" data-vehicle-size="coupe" aria-pressed="false">Coupe</button>
+            <button type="button" class="vehicle-size-btn" data-vehicle-size="suv" aria-pressed="false">SUV</button>
+            <button type="button" class="vehicle-size-btn" data-vehicle-size="truck" aria-pressed="false">Truck</button>
+            <button type="button" class="vehicle-size-btn" data-vehicle-size="large" aria-pressed="false">Large SUV / Van</button>
+          </div>
+        </div>
       </header>
 
-      <section id="exterior" class="package">
+      <!-- Exterior Package -->
+      <section id="exterior" class="service-block">
         <div class="package-head">
           <div class="package-media">
             <img src="photos/1.jpg" alt="Exterior Package" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-            <div class="package-media-placeholder" style="display:none;"><span>Exterior</span></div>
+            <div class="package-media-placeholder" style="display:none;"><span>Replace: Exterior detail</span></div>
           </div>
           <div class="package-info">
             <h2>Exterior Package</h2>
             <p>Restore and protect your vehicle's exterior with a deep clean and professional finish. Perfect for maintaining shine, boosting curb appeal, and preserving your paint's condition for long-term durability.</p>
-            <a href="tel:4849990194" class="btn btn-primary">Call for a Free Quote — (484) 999-0194</a>
+            <p class="service-block-price"><span data-price="exterior" data-price-prefix="Starting at ">Starting at $150</span></p>
+            <a href="booking.html" class="btn btn-primary">Book Now</a>
           </div>
         </div>
         <h3 class="package-list-title">Professional Exterior Detail — What's Included?</h3>
@@ -65,16 +78,18 @@
         </ul>
       </section>
 
-      <section id="interior" class="package">
+      <!-- Interior Package -->
+      <section id="interior" class="service-block">
         <div class="package-head">
           <div class="package-media">
             <img src="photos/2.jpg" alt="Interior Package" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-            <div class="package-media-placeholder" style="display:none;"><span>Interior</span></div>
+            <div class="package-media-placeholder" style="display:none;"><span>Replace: Interior detail</span></div>
           </div>
           <div class="package-info">
             <h2>Interior Package</h2>
             <p>Revitalize your car's interior with deep cleaning and sanitization. We remove stains, eliminate odors, and leave every surface spotless for a fresh, like-new feel.</p>
-            <a href="tel:4849990194" class="btn btn-primary">Call for a Free Quote — (484) 999-0194</a>
+            <p class="service-block-price"><span data-price="interior" data-price-prefix="Starting at ">Starting at $150</span></p>
+            <a href="booking.html" class="btn btn-primary">Book Now</a>
           </div>
         </div>
         <h3 class="package-list-title">Interior Package — What's Included?</h3>
@@ -87,6 +102,40 @@
           <li><strong>Crystal-Clear Interior Glass:</strong> Streak-free cleaning of all interior windows and mirrors for flawless visibility.</li>
         </ul>
       </section>
+
+      <!-- Additional Services -->
+      <section id="additional" class="service-block">
+        <h2 class="section-title">Additional Services</h2>
+        <p class="section-desc">Upgrade your vehicle with specialized services for a flawless finish. Add to a package or inquire individually.</p>
+        <div class="addons-grid">
+          <div class="addon-card">
+            <h3>Engine Bay Detail</h3>
+            <p>Clean and dress the engine compartment for a polished, professional look.</p>
+            <p class="service-block-price"><span data-price="engineBay" data-price-prefix="Starting at ">Starting at $75</span></p>
+          </div>
+          <div class="addon-card">
+            <h3>Leather Conditioner</h3>
+            <p>Condition and protect leather surfaces for a like-new feel and long-term durability.</p>
+            <p class="service-block-price"><span data-price="leatherConditioner" data-price-prefix="Starting at ">Starting at $50</span></p>
+          </div>
+          <div class="addon-card">
+            <h3>Headlight Restoration</h3>
+            <p>Restore cloudy or yellowed headlights for improved visibility and a clean look.</p>
+            <p class="service-block-price"><span data-price="headlightRestoration" data-price-prefix="Starting at ">Starting at $65</span></p>
+          </div>
+          <div class="addon-card">
+            <h3>Paint Decontamination + Clay Bar</h3>
+            <p>Remove bonded contaminants for a glass-smooth surface before sealing. For full detail package only.</p>
+            <p class="service-block-price"><span data-price="paintDecontaminationClayBar" data-price-prefix="Starting at ">Starting at $100</span></p>
+          </div>
+        </div>
+        <p class="addon-disclaimer"><strong>Note:</strong> Paint Decontamination + Clay Bar is available for full detail package only.</p>
+      </section>
+
+      <div class="cta-box">
+        <p>Call for a free quote: <a href="tel:4849990194">(484) 999-0194</a></p>
+        <a href="booking.html" class="btn btn-primary">Book Now</a>
+      </div>
     </div>
   </main>
 
@@ -96,11 +145,12 @@
         <span class="footer-brand">Sopes Auto Detailing</span>
         <nav class="footer-links">
           <a href="index.html">Home</a>
-          <a href="services.html">Packages</a>
-          <a href="additional-services.html">Additional Services</a>
-          <a href="policies.html">Policies</a>
-          <a href="booking.html">Booking</a>
-          <a href="contact.html">Contact</a>
+          <a href="services.html">Services</a>
+          <a href="maintenance.html">Maintenance</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="areas.html">Areas</a>
+          <a href="policies.html">Policies / FAQ</a>
+          <a href="booking.html">Book Now</a>
         </nav>
         <div class="footer-social">
           <a href="https://facebook.com/share/1AEvjMZHsa/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook</a>
@@ -112,6 +162,7 @@
     </div>
   </footer>
 
+  <script src="pricing-data.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
