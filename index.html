@@ -20,9 +20,9 @@
         <a href="gallery.html">Gallery</a>
         <a href="areas.html">Areas</a>
         <a href="policies.html">Policies / FAQ</a>
-        <a href="booking.html" class="nav-cta">Book Now</a>
+        <a href="booking.html">Booking</a>
       </nav>
-      <button type="button" class="header-vehicle-btn" id="header-vehicle-btn" aria-label="Select vehicle size">Vehicle: <span id="header-vehicle-label">Sedan</span></button>
+      <button type="button" class="header-vehicle-btn" id="header-vehicle-btn" aria-label="Select vehicle size"><span id="header-vehicle-label">Select</span></button>
       <button class="nav-toggle" aria-label="Menu">
         <span></span>
         <span></span>
@@ -41,7 +41,6 @@
         <p class="hero-desc">Expert-level care and attention to every detail. We offer high-quality interior and exterior services designed to enhance and protect your vehicle. All at your convenience.</p>
         <div class="hero-actions">
           <a href="services.html" class="btn btn-primary">View Services</a>
-          <a href="booking.html" class="btn btn-outline">Book Now</a>
           <button type="button" class="btn btn-outline" data-open-vehicle-modal>Select Vehicle Size</button>
           <a href="tel:4849990194" class="btn btn-outline">(484) 999-0194</a>
         </div>
@@ -66,11 +65,51 @@
       </div>
     </section>
 
+    <section class="section">
+      <div class="container">
+        <p class="section-label">Professional imagery</p>
+        <h2 class="section-title">Our process</h2>
+        <p class="section-desc">Expert care at every step.</p>
+        <div class="services-cards" style="grid-template-columns: repeat(3, 1fr);">
+          <div class="service-card" style="pointer-events: none;">
+            <div class="service-card-media">
+              <img src="photos/foam.jpg" alt="Foaming a car" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="service-card-placeholder" style="display:none;"><span>Replace: Owner foaming up a car</span></div>
+            </div>
+            <div class="service-card-body">
+              <h3>Foam wash</h3>
+              <p>Professional foam application for a thorough, gentle clean.</p>
+            </div>
+          </div>
+          <div class="service-card" style="pointer-events: none;">
+            <div class="service-card-media">
+              <img src="photos/wheels.jpg" alt="Washing wheels" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="service-card-placeholder" style="display:none;"><span>Replace: Washing wheels</span></div>
+            </div>
+            <div class="service-card-body">
+              <h3>Wheels & tires</h3>
+              <p>Meticulous wheel and tire cleaning.</p>
+            </div>
+          </div>
+          <div class="service-card" style="pointer-events: none;">
+            <div class="service-card-media">
+              <img src="photos/interior.jpg" alt="Interior detailing" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="service-card-placeholder" style="display:none;"><span>Replace: Interior detailing</span></div>
+            </div>
+            <div class="service-card-body">
+              <h3>Interior detailing</h3>
+              <p>Deep cleaning and sanitization inside your vehicle.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="services" class="section">
       <div class="container">
         <p class="section-label">What we offer</p>
         <h2 class="section-title">Services overview</h2>
-        <p class="section-desc">Choose from our professional packages or add specialized services for a complete detail. Pricing scales by vehicle size.</p>
+        <p class="section-desc">Choose from our professional packages. Select your vehicle size to view pricing.</p>
         <div class="services-cards">
           <a href="services.html#exterior" class="service-card">
             <div class="service-card-media">
@@ -94,17 +133,6 @@
               <span class="service-card-link">View details & pricing →</span>
             </div>
           </a>
-          <a href="services.html#additional" class="service-card">
-            <div class="service-card-media">
-              <img src="photos/3.jpg" alt="Additional Services" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-              <div class="service-card-placeholder" style="display:none;"><span>Replace: Add-on service photo</span></div>
-            </div>
-            <div class="service-card-body">
-              <h3>Additional Services</h3>
-              <p>Upgrade your vehicle with specialized services like upholstery shampoo, headlight restoration, clay bar treatment, polishing, and engine bay cleaning for a flawless finish.</p>
-              <span class="service-card-link">View details & pricing →</span>
-            </div>
-          </a>
         </div>
         <div style="text-align: center; margin-top: var(--space-xl);">
           <a href="services.html" class="btn btn-primary">See all services & pricing</a>
@@ -120,6 +148,40 @@
         <div class="gallery-grid" id="gallery-grid"></div>
         <div style="text-align: center; margin-top: var(--space-xl);">
           <a href="gallery.html" class="btn btn-outline">View full gallery</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="add-ons" class="section">
+      <div class="container">
+        <p class="section-label">Optional upgrades</p>
+        <h2 class="section-title">Add-ons</h2>
+        <p class="section-desc">Optional add-ons can be selected at booking. Add to any package for a complete detail.</p>
+        <div class="addons-grid">
+          <div class="addon-card">
+            <h3>Engine Bay Detail</h3>
+            <p>Clean and dress the engine compartment for a polished, professional look.</p>
+            <p class="service-block-price"><span data-price="engineBay" data-price-prefix="Starting at ">—</span></p>
+          </div>
+          <div class="addon-card">
+            <h3>Leather Conditioner</h3>
+            <p>Condition and protect leather surfaces for a like-new feel and long-term durability.</p>
+            <p class="service-block-price"><span data-price="leatherConditioner" data-price-prefix="Starting at ">—</span></p>
+          </div>
+          <div class="addon-card">
+            <h3>Headlight Restoration</h3>
+            <p>Restore cloudy or yellowed headlights for improved visibility and a clean look.</p>
+            <p class="service-block-price"><span data-price="headlightRestoration" data-price-prefix="Starting at ">—</span></p>
+          </div>
+          <div class="addon-card">
+            <h3>Paint Decontamination + Clay Bar</h3>
+            <p>Remove bonded contaminants for a glass-smooth surface before sealing. For full detail package only.</p>
+            <p class="service-block-price"><span data-price="paintDecontaminationClayBar" data-price-prefix="Starting at ">—</span></p>
+          </div>
+        </div>
+        <p class="addon-disclaimer">Add-ons are optional upgrades. Select your vehicle size to view pricing. Paint Decontamination + Clay Bar is available for full detail package only.</p>
+        <div style="text-align: center; margin-top: var(--space-lg);">
+          <a href="booking.html" class="btn btn-outline">Book and add options</a>
         </div>
       </div>
     </section>

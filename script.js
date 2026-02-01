@@ -5,7 +5,7 @@
 
 const STORAGE_KEY = 'sopes_vehicle_size';
 const CONFIRMED_KEY = 'sopes_vehicle_modal_done';
-const DEFAULT_SIZE = 'sedan';
+const DEFAULT_SIZE = 'coupe';
 
 document.addEventListener('DOMContentLoaded', () => {
   injectVehicleModal();
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function getVehicleSize() {
   try {
-    const stored = sessionStorage.getItem(STORAGE_KEY);
+    const stored = localStorage.getItem(STORAGE_KEY) || sessionStorage.getItem(STORAGE_KEY);
     if (stored && window.SOPES_PRICING) {
       const found = window.SOPES_PRICING.vehicleSizes.find(s => s.id === stored);
       if (found) return stored;
@@ -32,14 +32,16 @@ function getVehicleSize() {
 
 function getVehicleConfirmed() {
   try {
-    return sessionStorage.getItem(CONFIRMED_KEY) === 'true';
+    return localStorage.getItem(CONFIRMED_KEY) === 'true' || sessionStorage.getItem(CONFIRMED_KEY) === 'true';
   } catch (_) {}
   return false;
 }
 
 function setVehicleSize(id) {
   try {
+    localStorage.setItem(STORAGE_KEY, id);
     sessionStorage.setItem(STORAGE_KEY, id);
+    localStorage.setItem(CONFIRMED_KEY, 'true');
     sessionStorage.setItem(CONFIRMED_KEY, 'true');
   } catch (_) {}
   document.body.classList.add('vehicle-selected');
@@ -92,7 +94,7 @@ function updatePriceVisibility() {
   } else {
     document.body.classList.remove('vehicle-selected');
     document.querySelectorAll('[data-price]').forEach(el => {
-      el.textContent = 'Select vehicle to see pricing';
+      el.textContent = 'Select vehicle size to view pricing';
       el.classList.add('price-placeholder-text');
     });
   }
@@ -113,15 +115,20 @@ function updateVehicleSelectorUI() {
   const label = document.querySelector('.vehicle-size-current');
   if (label && window.SOPES_PRICING) {
     const size = window.SOPES_PRICING.vehicleSizes.find(s => s.id === current);
-    label.textContent = size ? size.label : 'Sedan';
+    label.textContent = size ? size.label : 'Coupe';
   }
 }
 
 function updateHeaderVehicleLabel() {
   const label = document.getElementById('header-vehicle-label');
-  if (label && window.SOPES_PRICING) {
+  if (!label) return;
+  if (!getVehicleConfirmed()) {
+    label.textContent = 'Select';
+    return;
+  }
+  if (window.SOPES_PRICING) {
     const size = window.SOPES_PRICING.vehicleSizes.find(s => s.id === getVehicleSize());
-    label.textContent = size ? size.label : 'Sedan';
+    label.textContent = size ? size.label : 'Coupe';
   }
 }
 
@@ -139,10 +146,10 @@ function injectVehicleModal() {
     '<div class="vehicle-modal-content">' +
       '<button type="button" class="vehicle-modal-close" aria-label="Close">&times;</button>' +
       '<h2 id="vehicle-modal-title">Select your vehicle size</h2>' +
-      '<p class="vehicle-modal-desc">Pricing is based on vehicle size. Choose yours to see accurate prices across the site.</p>' +
+      '<p class="vehicle-modal-desc">Pricing and service details are based on your vehicle size. Please select your vehicle to view pricing and continue.</p>' +
       '<div class="vehicle-modal-options">' +
-        '<button type="button" class="vehicle-modal-btn" data-vehicle-size="sedan">Sedan</button>' +
         '<button type="button" class="vehicle-modal-btn" data-vehicle-size="coupe">Coupe</button>' +
+        '<button type="button" class="vehicle-modal-btn" data-vehicle-size="sedan">Sedan</button>' +
         '<button type="button" class="vehicle-modal-btn" data-vehicle-size="suv">SUV</button>' +
         '<button type="button" class="vehicle-modal-btn" data-vehicle-size="truck">Truck</button>' +
         '<button type="button" class="vehicle-modal-btn" data-vehicle-size="large">Large SUV / Van</button>' +

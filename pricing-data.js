@@ -3,12 +3,14 @@
  *
  * Base prices below are placeholders for the dynamic pricing UI.
  * Replace with real prices from Sopes Auto Detailing once confirmed.
+ *
+ * Vehicle order: smallest to largest (cheapest → most expensive).
  */
 
 window.SOPES_PRICING = {
   vehicleSizes: [
-    { id: 'sedan', label: 'Sedan', multiplier: 1 },
     { id: 'coupe', label: 'Coupe', multiplier: 0.95 },
+    { id: 'sedan', label: 'Sedan', multiplier: 1 },
     { id: 'suv', label: 'SUV', multiplier: 1.2 },
     { id: 'truck', label: 'Truck', multiplier: 1.35 },
     { id: 'large', label: 'Large SUV / Van', multiplier: 1.5 }
