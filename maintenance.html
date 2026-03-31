@@ -1,121 +1,368 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Maintenance Packages | Sopes Auto Detailing</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maintenance Plans — Sopes Auto Detailing</title>
+  <meta name="description" content="Keep your vehicle showroom-ready with Sopes Auto Detailing maintenance plans. Bi-weekly, monthly, and bi-monthly options available after a Full Detail." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .page-hero {
+      background: var(--dark);
+      padding: 130px 28px 64px;
+      border-bottom: 1px solid rgba(201,168,76,0.1);
+      position: relative; overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 80% 40%, rgba(26,74,39,0.35) 0%, transparent 55%);
+    }
+    .page-hero-inner { max-width: var(--max-width); margin: 0 auto; position: relative; z-index:1; }
+
+    /* ── PREREQ BANNER ──────────────────────────────────── */
+    .prereq {
+      background: rgba(201,168,76,0.07);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: var(--radius);
+      padding: 18px 22px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      margin-bottom: 52px;
+    }
+    .prereq-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+    .prereq-body { font-size: 14px; color: rgba(245,245,240,0.7); line-height: 1.65; }
+    .prereq-body strong { color: var(--gold); }
+    .prereq-body a { color: var(--gold); text-decoration: underline; }
+
+    /* ── PLAN CARDS ─────────────────────────────────────── */
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 64px;
+    }
+    .plan-card {
+      background: rgba(10,31,15,0.5);
+      border: 1px solid rgba(245,245,240,0.07);
+      border-radius: var(--radius-lg);
+      padding: 36px 28px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+    .plan-card:hover { border-color: rgba(201,168,76,0.28); transform: translateY(-4px); }
+    .plan-card.popular {
+      border-color: rgba(201,168,76,0.35);
+      background: rgba(26,74,39,0.16);
+    }
+    .plan-flag {
+      position: absolute;
+      top: 0; right: 0;
+      background: var(--gold);
+      color: var(--black);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 0 var(--radius-lg) 0 var(--radius);
+    }
+    .plan-freq {
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+    .plan-name {
+      font-family: var(--font-display);
+      font-size: 36px;
+      letter-spacing: 0.03em;
+      color: var(--off-white);
+      margin-bottom: 4px;
+      line-height: 1;
+    }
+    .plan-price {
+      font-family: var(--font-display);
+      font-size: 52px;
+      color: var(--gold);
+      letter-spacing: 0.02em;
+      line-height: 1;
+      margin: 12px 0 4px;
+    }
+    .plan-price-sub { font-size: 13px; color: rgba(245,245,240,0.42); margin-bottom: 22px; }
+    .plan-divider { height: 1px; background: rgba(245,245,240,0.07); margin-bottom: 22px; }
+    .plan-includes-label {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(245,245,240,0.36);
+      margin-bottom: 14px;
+    }
+    .plan-cta { margin-top: auto; padding-top: 26px; }
+    .plan-cta .btn { width: 100%; }
+    .plan-glow {
+      position: absolute;
+      bottom: -40px; right: -40px;
+      width: 140px; height: 140px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* ── COMPARISON TABLE ───────────────────────────────── */
+    .comparison { margin-bottom: 64px; }
+    .comp-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 28px;
+    }
+    .comp-table th, .comp-table td {
+      padding: 14px 18px;
+      text-align: left;
+      border-bottom: 1px solid rgba(245,245,240,0.06);
+      font-size: 14px;
+    }
+    .comp-table th {
+      font-family: var(--font-display);
+      font-size: 16px;
+      letter-spacing: 0.06em;
+      color: var(--off-white);
+      background: rgba(26,74,39,0.18);
+    }
+    .comp-table td { color: rgba(245,245,240,0.62); }
+    .comp-table td:first-child { color: var(--off-white); font-weight: 500; }
+    .comp-check { color: var(--light-green); font-size: 16px; }
+    .comp-dash { color: rgba(245,245,240,0.2); }
+    .comp-table tr:last-child td { border-bottom: none; }
+
+    @media (max-width: 900px) {
+      .plans-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto 64px; }
+      .comp-table { font-size: 13px; }
+      .comp-table th, .comp-table td { padding: 11px 12px; }
+    }
+    @media (max-width: 600px) {
+      .page-hero { padding: 110px 20px 48px; }
+    }
+  </style>
 </head>
 <body>
-  <header class="header">
-    <div class="header-inner container">
-      <a href="index.html" class="logo"><img src="photos/Logo.png" alt="Sopes Auto Detailing"></a>
-      <nav class="nav">
-        <a href="index.html">Home</a>
-        <a href="services.html">Services</a>
-        <a href="maintenance.html">Maintenance</a>
-        <a href="gallery.html">Gallery</a>
-        <a href="areas.html">Areas</a>
-        <a href="policies.html">Policies / FAQ</a>
-        <a href="booking.html">Booking</a>
-      </nav>
-      <button type="button" class="header-vehicle-btn" id="header-vehicle-btn" aria-label="Select vehicle size"><span id="header-vehicle-label">Select</span></button>
-      <button class="nav-toggle" aria-label="Menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+
+<div class="loader" id="loader">
+  <div class="loader-logo">SOPES</div>
+  <div class="loader-sub">Auto Detailing</div>
+  <div class="loader-track"><div class="loader-fill"></div></div>
+</div>
+
+<nav class="site-nav scrolled" id="siteNav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">SOPES <em>AUTO DETAILING</em></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="maintenance.html" class="active">Maintenance</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="areas.html">Areas</a>
+      <a href="policies.html">FAQ</a>
+      <a href="booking.html" class="nav-cta">Book Now</a>
     </div>
-  </header>
+    <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="nav-drawer" id="drawer">
+  <a href="index.html">Home</a>
+  <a href="services.html">Services</a>
+  <a href="maintenance.html">Maintenance</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="areas.html">Areas</a>
+  <a href="policies.html">FAQ</a>
+  <a href="tel:4849990194">(484) 999-0194</a>
+  <a href="booking.html" class="drawer-cta">Book Now</a>
+</div>
 
-  <main class="page">
-    <div class="container">
-      <header class="page-head">
-        <h1 class="page-title">Maintenance Packages</h1>
-        <p class="page-desc">Keep your vehicle looking its best with regular maintenance. Select your vehicle size in the header to view pricing.</p>
-        <p class="maintenance-disclaimer" role="note"><strong>Available AFTER a Full Detail.</strong> Call <a href="tel:4849990194">(484) 999-0194</a> to confirm availability and book.</p>
-      </header>
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <span class="eyebrow reveal">Recurring Service</span>
+    <h1 class="section-heading reveal" style="transition-delay:.06s">Maintenance Plans</h1>
+    <p class="section-sub reveal" style="transition-delay:.12s">Keep your vehicle showroom-ready year-round. Flexible plans available after your first Full Detail.</p>
+  </div>
+</div>
 
-      <div class="maintenance-grid">
-        <div class="maintenance-card">
-          <h3>Weekly (Premium Care)</h3>
-          <p class="frequency">Every week</p>
-          <p>Premium care to keep your vehicle in top condition between full details.</p>
-          <p class="service-block-price"><span data-price="weekly" data-price-prefix="Starting at ">Starting at $149.99</span></p>
-          <a href="booking.html" class="btn btn-primary">Book Now</a>
-        </div>
-        <div class="maintenance-card featured">
-          <span class="package-badge popular">Most popular</span>
-          <h3>Bi-Weekly (Most Popular)</h3>
-          <p class="frequency">Every 2 weeks</p>
-          <p>Bi-weekly exterior and interior maintenance to maintain the finish and cleanliness of your vehicle.</p>
-          <p class="service-block-price"><span data-price="biweekly" data-price-prefix="Starting at ">Starting at $169.99</span></p>
-          <a href="booking.html" class="btn btn-primary">Book Now</a>
-        </div>
-        <div class="maintenance-card">
-          <h3>Monthly (Light Maintenance)</h3>
-          <p class="frequency">Once per month</p>
-          <p>Monthly maintenance to preserve your vehicle's condition and extend the life of your full detail.</p>
-          <p class="service-block-price"><span data-price="monthly" data-price-prefix="Starting at ">Starting at $189.99</span></p>
-          <a href="booking.html" class="btn btn-primary">Book Now</a>
-        </div>
+<section class="page-section">
+  <div class="section-wrap">
+
+    <!-- Pre-req notice -->
+    <div class="prereq reveal">
+      <div class="prereq-icon">ℹ️</div>
+      <div class="prereq-body">
+        <strong>Maintenance plans require a Full Detail first.</strong> This ensures your vehicle is fully decontaminated and protected before we maintain it. Not had a Full Detail yet? <a href="services.html">Book one here</a>.
       </div>
+    </div>
 
-      <section class="maintenance-includes">
-        <h2 class="section-title">Maintenance Includes</h2>
-        <ul class="package-list">
-          <li>Wheels, tires &amp; inner barrel cleaning</li>
-          <li>Foam wash</li>
-          <li>Spray sealant</li>
-          <li>Door jamb cleaning</li>
-          <li>Interior vacuum</li>
-          <li>Interior wipe down</li>
-          <li>Vents &amp; crevices detailed</li>
-          <li>Light carpet cleaning</li>
+    <!-- Plan cards -->
+    <div class="plans-grid">
+
+      <div class="plan-card reveal">
+        <div class="plan-freq">Every 2 Weeks</div>
+        <div class="plan-name">Bi-Weekly</div>
+        <div class="plan-price">$120</div>
+        <div class="plan-price-sub">Starting price · per visit</div>
+        <div class="plan-divider"></div>
+        <div class="plan-includes-label">Each Visit Includes</div>
+        <ul class="check-list">
+          <li>Exterior wash</li>
+          <li>Wheel &amp; tire refresh</li>
           <li>Window cleaning</li>
           <li>Tire shine</li>
+          <li>Interior touch-up &amp; wipe-down</li>
+          <li>Quick vacuum</li>
         </ul>
-        <h2 class="section-title">Benefits</h2>
-        <ul class="package-list">
-          <li>Consistently clean appearance</li>
-          <li>Prolonged protection</li>
-          <li>Reduced wear and buildup</li>
-          <li>Convenience &amp; long-term value</li>
-        </ul>
-      </section>
+        <div class="plan-cta"><a href="booking.html" class="btn btn-outline">Get Started</a></div>
+        <div class="plan-glow"></div>
+      </div>
 
-      <div class="cta-box">
-        <p>Confirm availability and book: <a href="tel:4849990194">(484) 999-0194</a></p>
-        <a href="booking.html" class="btn btn-primary">Book Now</a>
+      <div class="plan-card popular reveal" style="transition-delay:.12s">
+        <div class="plan-flag">Most Popular</div>
+        <div class="plan-freq">Once a Month</div>
+        <div class="plan-name">Monthly</div>
+        <div class="plan-price">$140</div>
+        <div class="plan-price-sub">Starting price · per visit</div>
+        <div class="plan-divider"></div>
+        <div class="plan-includes-label">Each Visit Includes</div>
+        <ul class="check-list">
+          <li>Full exterior wash &amp; rinse</li>
+          <li>Wheel &amp; tire cleaning</li>
+          <li>Window cleaning inside &amp; out</li>
+          <li>Tire shine &amp; plastic refresh</li>
+          <li>Interior vacuum &amp; wipe-down</li>
+          <li>Spot treatment as needed</li>
+        </ul>
+        <div class="plan-cta"><a href="booking.html" class="btn btn-gold">Get Started</a></div>
+        <div class="plan-glow"></div>
+      </div>
+
+      <div class="plan-card reveal" style="transition-delay:.24s">
+        <div class="plan-freq">Every 2 Months</div>
+        <div class="plan-name">Bi-Monthly</div>
+        <div class="plan-price">$160</div>
+        <div class="plan-price-sub">Starting price · per visit</div>
+        <div class="plan-divider"></div>
+        <div class="plan-includes-label">Each Visit Includes</div>
+        <ul class="check-list">
+          <li>Deep exterior wash &amp; decontamination</li>
+          <li>Wheel &amp; tire full treatment</li>
+          <li>Paint sealant refresh</li>
+          <li>Window cleaning inside &amp; out</li>
+          <li>Interior full vacuum &amp; wipe-down</li>
+          <li>Carpet spot treatment</li>
+        </ul>
+        <div class="plan-cta"><a href="booking.html" class="btn btn-outline">Get Started</a></div>
+        <div class="plan-glow"></div>
       </div>
     </div>
-  </main>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <span class="footer-brand">Sopes Auto Detailing</span>
-        <nav class="footer-links">
-          <a href="index.html">Home</a>
-          <a href="services.html">Services</a>
-          <a href="maintenance.html">Maintenance</a>
-          <a href="gallery.html">Gallery</a>
-          <a href="areas.html">Areas</a>
-          <a href="policies.html">Policies / FAQ</a>
-          <a href="booking.html">Book Now</a>
-        </nav>
-        <div class="footer-social">
-          <a href="https://facebook.com/share/1AEvjMZHsa/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook</a>
-          <a href="https://instagram.com/sopesautodetailing?igsh=Y3BjMGs1MzUzaGtv" target="_blank" rel="noopener">Instagram</a>
+    <!-- Comparison table -->
+    <div class="comparison reveal">
+      <span class="eyebrow">Compare Plans</span>
+      <h2 class="section-heading">What's Included</h2>
+      <div style="overflow-x:auto;">
+        <table class="comp-table">
+          <thead>
+            <tr>
+              <th>Service</th>
+              <th>Bi-Weekly</th>
+              <th>Monthly</th>
+              <th>Bi-Monthly</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Exterior wash &amp; rinse</td><td><span class="comp-check">✓</span></td><td><span class="comp-check">✓</span></td><td><span class="comp-check">✓</span></td></tr>
+            <tr><td>Wheel &amp; tire cleaning</td><td><span class="comp-check">✓</span></td><td><span class="comp-check">✓</span></td><td><span class="comp-check">✓</span></td></tr>
+            <tr><td>Window cleaning</td><td><span class="comp-check">✓</span></td><td><span class="comp-check">✓</span></td><td><span class="comp-check">✓</span></td></tr>
+            <tr><td>Interior touch-up &amp; vacuum</td><td><span class="comp-check">✓</span></td><td><span class="comp-check">✓</span></td><td><span class="comp-check">✓</span></td></tr>
+            <tr><td>Spot treatment</td><td><span class="comp-dash">—</span></td><td><span class="comp-check">✓</span></td><td><span class="comp-check">✓</span></td></tr>
+            <tr><td>Paint sealant refresh</td><td><span class="comp-dash">—</span></td><td><span class="comp-dash">—</span></td><td><span class="comp-check">✓</span></td></tr>
+            <tr><td>Deep decontamination wash</td><td><span class="comp-dash">—</span></td><td><span class="comp-dash">—</span></td><td><span class="comp-check">✓</span></td></tr>
+            <tr><td>Starting price</td><td>$120/visit</td><td>$140/visit</td><td>$160/visit</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="section-wrap">
+    <span class="eyebrow reveal">Let's Get Started</span>
+    <h2 class="section-heading reveal" style="transition-delay:.08s">Ready to Keep It<br><span style="color:var(--gold)">Spotless?</span></h2>
+    <p class="section-sub reveal" style="transition-delay:.16s; margin:0 auto 36px; text-align:center;">Book your Full Detail first, then we'll set you up on the plan that fits your schedule.</p>
+    <div class="cta-actions reveal" style="transition-delay:.24s">
+      <a href="booking.html" class="btn btn-gold">Book Full Detail</a>
+      <a href="tel:4849990194" class="btn btn-outline">Call (484) 999-0194</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">SOPES <em>AUTO</em></div>
+        <p class="footer-tagline">Expert-level mobile auto detailing serving Philadelphia and surrounding suburbs.</p>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/sopesautodetailing" target="_blank" rel="noopener" class="footer-social" aria-label="Instagram">📸</a>
+          <a href="https://facebook.com/share/1AEvjMZHsa/" target="_blank" rel="noopener" class="footer-social" aria-label="Facebook">📘</a>
         </div>
-        <p class="footer-copy">&copy; Sopes Auto Detailing</p>
+      </div>
+      <div>
+        <div class="footer-col-label">Services</div>
+        <div class="footer-links">
+          <a href="services.html">Full Detail</a><a href="services.html">Exterior Only</a>
+          <a href="services.html">Interior Only</a><a href="maintenance.html">Maintenance Plans</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-label">Company</div>
+        <div class="footer-links">
+          <a href="gallery.html">Gallery</a><a href="areas.html">Service Areas</a>
+          <a href="policies.html">Policies &amp; FAQ</a><a href="booking.html">Book Now</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-label">Contact</div>
+        <p class="footer-contact-line"><a href="tel:4849990194">(484) 999-0194</a></p>
+        <p class="footer-contact-line">Philadelphia Region</p>
+        <div class="footer-col-label" style="margin-top:16px;">We Accept</div>
+        <div class="footer-payments">
+          <span class="pay-chip">Visa</span><span class="pay-chip">Mastercard</span>
+          <span class="pay-chip">Maestro</span><span class="pay-chip">Discover</span><span class="pay-chip">PayPal</span>
+        </div>
       </div>
     </div>
-  </footer>
+    <div class="footer-bottom">
+      <p class="footer-copy">&copy; 2025 Sopes Auto Detailing. All rights reserved.</p>
+      <p class="footer-copy"><a href="policies.html">Policies &amp; FAQ</a></p>
+    </div>
+  </div>
+</footer>
 
-  <script src="pricing-data.js"></script>
-  <script src="script.js"></script>
+<script>
+  (function(){var page='maintenance.html',now=Date.now();var sid=sessionStorage.getItem('sopes_sid');if(!sid){sid='sess_'+now+'_'+Math.random().toString(36).slice(2,9);sessionStorage.setItem('sopes_sid',sid);localStorage.setItem('sopes_visitors',String((parseInt(localStorage.getItem('sopes_visitors')||'0')||0)+1));var sessions=JSON.parse(localStorage.getItem('sopes_sessions')||'[]');sessions.unshift({id:sid,start:now,pages:[]});if(sessions.length>200)sessions.pop();localStorage.setItem('sopes_sessions',JSON.stringify(sessions));}var views=JSON.parse(localStorage.getItem('sopes_pageviews')||'{}');views[page]=(views[page]||0)+1;localStorage.setItem('sopes_pageviews',JSON.stringify(views));try{var sessions=JSON.parse(localStorage.getItem('sopes_sessions')||'[]');var s=sessions.find(function(x){return x.id===sid;});if(s){s.pages.push({page:page,ts:now});localStorage.setItem('sopes_sessions',JSON.stringify(sessions));}}catch(e){}})();
+  window.addEventListener('load',function(){setTimeout(function(){var l=document.getElementById('loader');if(l)l.classList.add('out');},2000);});
+  var nav=document.getElementById('siteNav'),burger=document.getElementById('burger'),drawer=document.getElementById('drawer');
+  window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>40);},{passive:true});
+  burger.addEventListener('click',function(){burger.classList.toggle('open');drawer.classList.toggle('open');});
+  document.addEventListener('click',function(e){if(!nav.contains(e.target)&&!drawer.contains(e.target)){burger.classList.remove('open');drawer.classList.remove('open');}});
+  var io=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('in');io.unobserve(entry.target);}});},{threshold:0.07,rootMargin:'0px 0px -24px 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+</script>
 </body>
+</html>

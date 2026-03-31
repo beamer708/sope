@@ -1,251 +1,642 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sopes Auto Detailing | Professional Auto Detailing</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sopes Auto Detailing — Premium Mobile Detailing · Philadelphia</title>
+  <meta name="description" content="Professional mobile auto detailing serving Philadelphia and surrounding suburbs. Expert-level care delivered to your door. Book online or call (484) 999-0194." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ── HERO ───────────────────────────────────────────── */
+    .hero {
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background: var(--black);
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 72% 40%, rgba(26,74,39,0.45) 0%, transparent 55%),
+        radial-gradient(ellipse at 15% 85%, rgba(10,31,15,0.7) 0%, transparent 45%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(201,168,76,0.028) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,0.028) 1px, transparent 1px);
+      background-size: 56px 56px;
+    }
+    .hero-content {
+      position: relative; z-index: 1;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 130px 28px 80px;
+      width: 100%;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(201,168,76,0.1);
+      border: 1px solid rgba(201,168,76,0.28);
+      padding: 6px 16px;
+      border-radius: 100px;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 22px;
+    }
+    .hero-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      animation: dot-pulse 2s ease-in-out infinite;
+    }
+    @keyframes dot-pulse {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.3; }
+    }
+    .hero-headline {
+      font-family: var(--font-display);
+      font-size: clamp(64px, 10vw, 130px);
+      line-height: 0.9;
+      letter-spacing: 0.018em;
+      color: var(--off-white);
+      max-width: 720px;
+    }
+    .hero-headline .gold { color: var(--gold); }
+    .hero-sub {
+      font-family: var(--font-serif);
+      font-size: clamp(17px, 2.2vw, 22px);
+      color: rgba(245,245,240,0.6);
+      max-width: 460px;
+      margin: 22px 0 40px;
+      line-height: 1.55;
+    }
+    .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+    .hero-stats {
+      display: flex;
+      gap: 48px;
+      margin-top: 72px;
+      padding-top: 36px;
+      border-top: 1px solid rgba(245,245,240,0.07);
+      flex-wrap: wrap;
+    }
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 42px;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .stat-lbl {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(245,245,240,0.42);
+      margin-top: 4px;
+    }
+
+    /* ── ABOUT ──────────────────────────────────────────── */
+    .about { background: var(--dark); border-top: 1px solid rgba(201,168,76,0.1); border-bottom: 1px solid rgba(201,168,76,0.08); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .about-body p { color: rgba(245,245,240,0.66); font-size: 15.5px; margin-bottom: 14px; }
+    .about-body p:last-of-type { margin-bottom: 0; }
+    .about-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+    .about-img {
+      aspect-ratio: 4/3;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      position: relative;
+    }
+    .about-img img { width: 100%; height: 100%; object-fit: cover; }
+    .about-img::after {
+      content: '';
+      position: absolute; inset: 0;
+      border: 1px solid rgba(201,168,76,0.18);
+      border-radius: var(--radius-lg);
+      pointer-events: none;
+    }
+
+    /* ── PROCESS ─────────────────────────────────────────── */
+    .process { background: var(--black); }
+    .process-head { text-align: center; margin-bottom: 56px; }
+    .process-head .section-sub { margin: 0 auto; }
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid rgba(245,245,240,0.06);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .process-step {
+      padding: 44px 32px;
+      background: rgba(26,74,39,0.07);
+      position: relative;
+      border-right: 1px solid rgba(245,245,240,0.06);
+      transition: background var(--transition);
+    }
+    .process-step:last-child { border-right: none; }
+    .process-step:hover { background: rgba(26,74,39,0.16); }
+    .step-n {
+      font-family: var(--font-display);
+      font-size: 88px;
+      color: rgba(201,168,76,0.06);
+      line-height: 1;
+      position: absolute;
+      top: 12px; right: 20px;
+    }
+    .step-icon { font-size: 30px; margin-bottom: 18px; }
+    .step-title {
+      font-family: var(--font-display);
+      font-size: 26px;
+      letter-spacing: 0.04em;
+      color: var(--off-white);
+      margin-bottom: 10px;
+    }
+    .step-body { font-size: 14px; color: rgba(245,245,240,0.52); line-height: 1.7; }
+
+    /* ── SERVICES OVERVIEW ───────────────────────────────── */
+    .services-overview { background: var(--dark); }
+    .services-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 44px;
+      flex-wrap: wrap;
+    }
+    .svc-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .svc-card {
+      background: rgba(6,14,9,0.55);
+      border: 1px solid rgba(245,245,240,0.07);
+      border-radius: var(--radius-lg);
+      padding: 32px 26px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+    .svc-card:hover { border-color: rgba(201,168,76,0.28); transform: translateY(-4px); }
+    .svc-card.featured { border-color: rgba(201,168,76,0.3); background: rgba(26,74,39,0.14); }
+    .svc-tag {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--black);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 100px;
+      margin-bottom: 14px;
+    }
+    .svc-name {
+      font-family: var(--font-display);
+      font-size: 30px;
+      letter-spacing: 0.04em;
+      color: var(--off-white);
+      margin-bottom: 4px;
+    }
+    .svc-price { font-family: var(--font-serif); font-size: 14px; color: var(--gold); margin-bottom: 18px; }
+    .svc-divider { height: 1px; background: rgba(245,245,240,0.07); margin-bottom: 18px; }
+    .svc-glow {
+      position: absolute;
+      bottom: -36px; right: -36px;
+      width: 110px; height: 110px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* ── GALLERY PREVIEW ─────────────────────────────────── */
+    .gallery-preview { background: var(--black); }
+    .gallery-preview-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 36px;
+      flex-wrap: wrap;
+    }
+    .gallery-mosaic {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 240px 200px;
+      gap: 8px;
+    }
+    .gallery-mosaic .g-item:first-child { grid-column: span 2; }
+    .g-item {
+      overflow: hidden;
+      border-radius: var(--radius);
+      position: relative;
+    }
+    .g-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s var(--ease); }
+    .g-item:hover img { transform: scale(1.05); }
+    .g-overlay {
+      position: absolute; inset: 0;
+      background: transparent;
+      transition: background var(--transition);
+    }
+    .g-item:hover .g-overlay { background: rgba(6,14,9,0.25); }
+
+    /* ── ADD-ONS ─────────────────────────────────────────── */
+    .addons { background: var(--dark); border-top: 1px solid rgba(201,168,76,0.08); }
+    .addons-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 44px; }
+    .addon-card {
+      background: rgba(6,14,9,0.5);
+      border: 1px solid rgba(245,245,240,0.07);
+      border-radius: var(--radius-lg);
+      padding: 26px 22px;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+    .addon-card:hover { border-color: rgba(201,168,76,0.24); transform: translateY(-3px); }
+    .addon-name {
+      font-family: var(--font-display);
+      font-size: 22px;
+      letter-spacing: 0.04em;
+      color: var(--off-white);
+      margin-bottom: 6px;
+    }
+    .addon-price { font-size: 13px; color: var(--gold); margin-bottom: 10px; }
+    .addon-desc { font-size: 14px; color: rgba(245,245,240,0.52); line-height: 1.65; }
+
+    /* ── RESPONSIVE ──────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .about-grid { grid-template-columns: 1fr; gap: 36px; }
+      .about-img { order: -1; }
+      .process-steps { grid-template-columns: 1fr; }
+      .process-step { border-right: none; border-bottom: 1px solid rgba(245,245,240,0.06); }
+      .process-step:last-child { border-bottom: none; }
+      .svc-cards { grid-template-columns: 1fr; }
+      .addons-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .hero-content { padding: 110px 20px 60px; }
+      .hero-stats { gap: 28px; }
+      .gallery-mosaic { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+      .gallery-mosaic .g-item:first-child { grid-column: span 2; height: 200px; }
+      .gallery-mosaic .g-item { height: 160px; }
+      .services-row { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 480px) {
+      .hero-ctas { flex-direction: column; }
+      .gallery-mosaic { grid-template-columns: 1fr; }
+      .gallery-mosaic .g-item:first-child { grid-column: span 1; }
+    }
+  </style>
 </head>
 <body>
-  <header class="header">
-    <div class="header-inner container">
-      <a href="index.html" class="logo"><img src="photos/Logo.png" alt="Sopes Auto Detailing"></a>
-      <nav class="nav">
-        <a href="index.html">Home</a>
-        <a href="services.html">Services</a>
-        <a href="maintenance.html">Maintenance</a>
-        <a href="gallery.html">Gallery</a>
-        <a href="areas.html">Areas</a>
-        <a href="policies.html">Policies / FAQ</a>
-        <a href="booking.html">Booking</a>
-      </nav>
-      <button type="button" class="header-vehicle-btn" id="header-vehicle-btn" aria-label="Select vehicle size"><span id="header-vehicle-label">Select</span></button>
-      <button class="nav-toggle" aria-label="Menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <div class="loader-logo">SOPES</div>
+  <div class="loader-sub">Auto Detailing</div>
+  <div class="loader-track"><div class="loader-fill"></div></div>
+</div>
+
+<!-- NAV -->
+<nav class="site-nav" id="siteNav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">SOPES <em>AUTO DETAILING</em></a>
+    <div class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="services.html">Services</a>
+      <a href="maintenance.html">Maintenance</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="areas.html">Areas</a>
+      <a href="policies.html">FAQ</a>
+      <a href="booking.html" class="nav-cta">Book Now</a>
     </div>
-  </header>
+    <button class="nav-burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-drawer" id="drawer">
+  <a href="index.html">Home</a>
+  <a href="services.html">Services</a>
+  <a href="maintenance.html">Maintenance</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="areas.html">Areas</a>
+  <a href="policies.html">FAQ</a>
+  <a href="tel:4849990194">(484) 999-0194</a>
+  <a href="booking.html" class="drawer-cta">Book Now</a>
+</div>
 
-  <main>
-    <section class="hero">
-      <div class="hero-bg" id="hero-bg"></div>
-      <div class="hero-overlay"></div>
-      <div class="container hero-content">
-        <p class="hero-badge">Professional auto detailing</p>
-        <h1 class="hero-title">Sopes Auto Detailing</h1>
-        <p class="hero-desc">Expert-level care and attention to every detail. We offer high-quality interior and exterior services designed to enhance and protect your vehicle. All at your convenience.</p>
-        <div class="hero-actions">
-          <a href="services.html" class="btn btn-primary">View Services</a>
-          <button type="button" class="btn btn-outline" data-open-vehicle-modal>Select Vehicle Size</button>
-          <a href="tel:4849990194" class="btn btn-outline">(484) 999-0194</a>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge reveal">Mobile Detailing &middot; Philadelphia Region</div>
+    <h1 class="hero-headline reveal" style="transition-delay:.08s">
+      Expert<br>Detail.<br><span class="gold">At Your</span><br>Door.
+    </h1>
+    <p class="hero-sub reveal" style="transition-delay:.16s">
+      Professional-grade auto detailing that comes to you — your home, your office, wherever you park.
+    </p>
+    <div class="hero-ctas reveal" style="transition-delay:.24s">
+      <a href="booking.html" class="btn btn-gold">Book Now</a>
+      <a href="tel:4849990194" class="btn btn-outline">Free Quote &middot; (484) 999-0194</a>
+    </div>
+    <div class="hero-stats reveal" style="transition-delay:.34s">
+      <div><div class="stat-num">2+</div><div class="stat-lbl">Years Experience</div></div>
+      <div><div class="stat-num">3</div><div class="stat-lbl">Service Packages</div></div>
+      <div><div class="stat-num">100%</div><div class="stat-lbl">Mobile Service</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about page-section">
+  <div class="section-wrap">
+    <div class="about-grid">
+      <div class="about-body">
+        <span class="eyebrow reveal">About Us</span>
+        <h2 class="section-heading reveal" style="transition-delay:.08s">We Come<br>To You.</h2>
+        <div style="margin-top:18px;" class="reveal" style="transition-delay:.16s">
+          <p>Sopes Auto Detailing brings expert-level care and attention to every detail — right to your location. No drop-offs, no waiting. Show us where you park and we handle the rest.</p>
+          <p>With 2+ years of professional detailing experience, we treat every vehicle like our own. From a quick exterior refresh to a full interior overhaul, our work speaks for itself.</p>
+        </div>
+        <div class="about-pills reveal" style="transition-delay:.22s">
+          <span class="pill pill-gold">✓ Fully Mobile</span>
+          <span class="pill pill-gold">✓ Philadelphia Region</span>
+          <span class="pill pill-green">✓ 2+ Years Experience</span>
+          <span class="pill pill-green">✓ Professional Grade</span>
         </div>
       </div>
-    </section>
+      <div class="about-img reveal" style="transition-delay:.18s">
+        <img src="photos/IMG_1081.JPEG" alt="Professional detailing work" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section id="about" class="section about">
-      <div class="container">
-        <div class="about-grid">
-          <div class="about-media">
-            <img src="photos/IMG_0097.JPEG" alt="Sopes Auto Detailing — professional detailing" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-            <div class="about-media-placeholder" style="display:none;"><span>About</span></div>
-          </div>
-          <div class="about-body">
-            <p class="section-label">About</p>
-            <h2 class="section-title">Two years of hands-on experience</h2>
-            <p>With two years of hands-on experience, Sope's Auto Detailing delivers expert-level care and attention to every detail.</p>
-            <p>We offer high-quality interior and exterior services designed to enhance, and protect your vehicle. All at your convenience.</p>
-            <a href="tel:4849990194" class="about-phone">(484) 999-0194</a>
-          </div>
+<!-- PROCESS -->
+<section class="process page-section">
+  <div class="section-wrap">
+    <div class="process-head reveal">
+      <span class="eyebrow">How It Works</span>
+      <h2 class="section-heading">Our Process</h2>
+      <p class="section-sub">From booking to shine — here's exactly what to expect.</p>
+    </div>
+    <div class="process-steps">
+      <div class="process-step reveal">
+        <div class="step-n">01</div>
+        <div class="step-icon">📋</div>
+        <div class="step-title">Book &amp; Quote</div>
+        <p class="step-body">Submit online or call (484) 999-0194 for a free quote. We'll confirm your appointment with all the details.</p>
+      </div>
+      <div class="process-step reveal" style="transition-delay:.12s">
+        <div class="step-n">02</div>
+        <div class="step-icon">🫧</div>
+        <div class="step-title">Foam &amp; Wash</div>
+        <p class="step-body">Touchless pre-foam soak, full wheel &amp; tire treatment, then a careful foam wash to safely lift every contaminant.</p>
+      </div>
+      <div class="process-step reveal" style="transition-delay:.24s">
+        <div class="step-n">03</div>
+        <div class="step-icon">✨</div>
+        <div class="step-title">Detail &amp; Protect</div>
+        <p class="step-body">Interior steam clean, shampoo, conditioning — exterior sealed and protected. Your car leaves gleaming.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES OVERVIEW -->
+<section class="services-overview page-section">
+  <div class="section-wrap">
+    <div class="services-row">
+      <div class="reveal">
+        <span class="eyebrow">What We Offer</span>
+        <h2 class="section-heading">Our Packages</h2>
+      </div>
+      <a href="services.html" class="btn btn-outline reveal">View Full Pricing</a>
+    </div>
+    <div class="svc-cards">
+      <div class="svc-card reveal">
+        <div class="svc-name">Exterior</div>
+        <div class="svc-price">Starting at $79.99</div>
+        <div class="svc-divider"></div>
+        <ul class="check-list" style="margin-bottom:24px;">
+          <li>Touchless pre-foam wash &amp; rinse</li>
+          <li>Wheel &amp; tire cleaning</li>
+          <li>Foam wash &amp; spray paint sealant</li>
+          <li>Window cleaning &amp; tire shine</li>
+          <li>Exterior plastic protection</li>
+        </ul>
+        <a href="services.html" class="btn btn-outline" style="width:100%">View Details</a>
+        <div class="svc-glow"></div>
+      </div>
+      <div class="svc-card featured reveal" style="transition-delay:.12s">
+        <div class="svc-tag">Most Complete</div>
+        <div class="svc-name">Full Detail</div>
+        <div class="svc-price">Starting at $269.99</div>
+        <div class="svc-divider"></div>
+        <ul class="check-list" style="margin-bottom:24px;">
+          <li>Complete exterior wash &amp; sealant</li>
+          <li>Bug &amp; tar treatment</li>
+          <li>Exterior plastic restoration</li>
+          <li>Full interior vacuum &amp; steam clean</li>
+          <li>Carpet &amp; seat shampoo</li>
+          <li>Interior conditioning &amp; windows</li>
+        </ul>
+        <a href="booking.html" class="btn btn-gold" style="width:100%">Book Now</a>
+        <div class="svc-glow"></div>
+      </div>
+      <div class="svc-card reveal" style="transition-delay:.24s">
+        <div class="svc-name">Interior</div>
+        <div class="svc-price">Starting at $189.99</div>
+        <div class="svc-divider"></div>
+        <ul class="check-list" style="margin-bottom:24px;">
+          <li>Full vacuum &amp; steam cleaning</li>
+          <li>Interior cleaning &amp; conditioning</li>
+          <li>Carpet &amp; seat shampooing</li>
+          <li>Dashboard &amp; console cleaning</li>
+          <li>Vents &amp; crevices detailed</li>
+        </ul>
+        <a href="services.html" class="btn btn-outline" style="width:100%">View Details</a>
+        <div class="svc-glow"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY PREVIEW -->
+<section class="gallery-preview page-section">
+  <div class="section-wrap">
+    <div class="gallery-preview-head reveal">
+      <div>
+        <span class="eyebrow">Our Work</span>
+        <h2 class="section-heading">Results That<br>Speak.</h2>
+      </div>
+      <a href="gallery.html" class="btn btn-outline">Full Gallery</a>
+    </div>
+    <div class="gallery-mosaic reveal" style="transition-delay:.1s">
+      <div class="g-item"><img src="photos/IMG_0720.JPEG" alt="Detailing result" loading="lazy" /><div class="g-overlay"></div></div>
+      <div class="g-item"><img src="photos/IMG_0719.jpeg" alt="Detailing result" loading="lazy" /><div class="g-overlay"></div></div>
+      <div class="g-item"><img src="photos/IMG_1170.jpg"  alt="Detailing result" loading="lazy" /><div class="g-overlay"></div></div>
+      <div class="g-item"><img src="photos/IMG_0097.JPEG" alt="Detailing result" loading="lazy" /><div class="g-overlay"></div></div>
+      <div class="g-item"><img src="photos/IMG_0539.jpeg" alt="Detailing result" loading="lazy" /><div class="g-overlay"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ADD-ONS -->
+<section class="addons page-section">
+  <div class="section-wrap">
+    <div class="reveal">
+      <span class="eyebrow">Enhance Your Detail</span>
+      <h2 class="section-heading">Add-Ons</h2>
+      <p class="section-sub">Professional-grade treatments to take your detail further.</p>
+    </div>
+    <div class="addons-grid">
+      <div class="addon-card reveal" style="transition-delay:.08s">
+        <div class="addon-name">Paint Decontamination</div>
+        <div class="addon-price">Coupes/Sedans $40–$60 &nbsp;·&nbsp; SUVs/Trucks $60–$80</div>
+        <p class="addon-desc">Iron remover + clay bar treatment pulls embedded contamination invisible to the naked eye. Recommended before any long-term protection coating.</p>
+      </div>
+      <div class="addon-card reveal" style="transition-delay:.16s">
+        <div class="addon-name">Pet Hair Removal</div>
+        <div class="addon-price">Fee applied as needed — quoted upfront</div>
+        <p class="addon-desc">Stubborn pet hair requires specialized tools and extra time. We'll give you a clear quote before we start — no surprises.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="section-wrap">
+    <span class="eyebrow reveal">Ready When You Are</span>
+    <h2 class="section-heading reveal" style="transition-delay:.08s">Book Your Detail<br><span style="color:var(--gold)">Today.</span></h2>
+    <p class="section-sub reveal" style="transition-delay:.16s; margin:0 auto 36px; text-align:center;">We come to you — call for a free quote or book online and get your vehicle looking its best.</p>
+    <div class="cta-actions reveal" style="transition-delay:.24s">
+      <a href="booking.html" class="btn btn-gold">Book Online</a>
+      <a href="tel:4849990194" class="btn btn-outline">Call (484) 999-0194</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">SOPES <em>AUTO</em></div>
+        <p class="footer-tagline">Expert-level mobile auto detailing serving Philadelphia and surrounding suburbs.</p>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/sopesautodetailing" target="_blank" rel="noopener" class="footer-social" aria-label="Instagram">📸</a>
+          <a href="https://facebook.com/share/1AEvjMZHsa/" target="_blank" rel="noopener" class="footer-social" aria-label="Facebook">📘</a>
         </div>
       </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <p class="section-label">Professional imagery</p>
-        <h2 class="section-title">Our process</h2>
-        <p class="section-desc">Expert care at every step.</p>
-        <div class="services-cards" style="grid-template-columns: repeat(3, 1fr);">
-          <div class="service-card" style="pointer-events: none;">
-            <div class="service-card-media">
-              <img src="photos/IMG_0277.jpeg" alt="Foaming a car" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-              <div class="service-card-placeholder" style="display:none;"><span>Foam wash</span></div>
-            </div>
-            <div class="service-card-body">
-              <h3>Foam wash</h3>
-              <p>Professional foam application for a thorough, gentle clean.</p>
-            </div>
-          </div>
-          <div class="service-card" style="pointer-events: none;">
-            <div class="service-card-media">
-              <img src="photos/IMG_0539.jpeg" alt="Washing wheels" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-              <div class="service-card-placeholder" style="display:none;"><span>Wheels &amp; tires</span></div>
-            </div>
-            <div class="service-card-body">
-              <h3>Wheels & tires</h3>
-              <p>Meticulous wheel and tire cleaning.</p>
-            </div>
-          </div>
-          <div class="service-card" style="pointer-events: none;">
-            <div class="service-card-media">
-              <img src="photos/IMG_0719.jpeg" alt="Interior detailing" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-              <div class="service-card-placeholder" style="display:none;"><span>Interior detailing</span></div>
-            </div>
-            <div class="service-card-body">
-              <h3>Interior detailing</h3>
-              <p>Deep cleaning and sanitization inside your vehicle.</p>
-            </div>
-          </div>
+      <div>
+        <div class="footer-col-label">Services</div>
+        <div class="footer-links">
+          <a href="services.html">Full Detail</a>
+          <a href="services.html">Exterior Only</a>
+          <a href="services.html">Interior Only</a>
+          <a href="maintenance.html">Maintenance Plans</a>
         </div>
       </div>
-    </section>
-
-    <section id="services" class="section">
-      <div class="container">
-        <p class="section-label">What we offer</p>
-        <h2 class="section-title">Services overview</h2>
-        <p class="section-desc">Choose from our professional packages. Select your vehicle size to view pricing.</p>
-        <div class="services-cards">
-          <a href="services.html#exterior" class="service-card">
-            <div class="service-card-media">
-              <img src="photos/IMG_0106.JPEG" alt="Exterior Package" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-              <div class="service-card-placeholder" style="display:none;"><span>Exterior</span></div>
-            </div>
-            <div class="service-card-body">
-              <h3>Exterior Package</h3>
-              <p>Restore and protect your vehicle's exterior with a deep clean and professional finish. Perfect for maintaining shine, boosting curb appeal, and preserving your paint's condition for long-term durability.</p>
-              <span class="service-card-link">View details & pricing →</span>
-            </div>
-          </a>
-          <a href="services.html#interior" class="service-card">
-            <div class="service-card-media">
-              <img src="photos/IMG_1170.jpg" alt="Interior Package" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-              <div class="service-card-placeholder" style="display:none;"><span>Interior</span></div>
-            </div>
-            <div class="service-card-body">
-              <h3>Interior Package</h3>
-              <p>Revitalize your car's interior with deep cleaning and sanitization. We remove stains, eliminate odors, and leave every surface spotless for a fresh, like-new feel.</p>
-              <span class="service-card-link">View details & pricing →</span>
-            </div>
-          </a>
-        </div>
-        <div style="text-align: center; margin-top: var(--space-xl);">
-          <a href="services.html" class="btn btn-primary">See all services & pricing</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section gallery-wrap">
-      <div class="container">
-        <p class="section-label">Our work</p>
-        <h2 class="section-title">Gallery</h2>
-        <p class="section-desc">Professional service imagery from our detailing work.</p>
-        <div class="gallery-grid" id="gallery-grid"></div>
-        <div style="text-align: center; margin-top: var(--space-xl);">
-          <a href="gallery.html" class="btn btn-outline">View full gallery</a>
-        </div>
-      </div>
-    </section>
-
-    <section id="add-ons" class="section">
-      <div class="container">
-        <p class="section-label">Optional upgrades</p>
-        <h2 class="section-title">Add-ons</h2>
-        <p class="section-desc">Optional add-ons can be selected at checkout. This add-on does not appear inside packages.</p>
-        <div class="addons-grid">
-          <div class="addon-card">
-            <h3>Paint Decontamination (Iron + Clay)</h3>
-            <p>Recommended as needed or before long-term protection.</p>
-            <p class="service-block-price"><span data-price-range="paintDecontamination" data-price-prefix="">Select vehicle size to view pricing</span></p>
-            <h4 class="package-list-title">Includes</h4>
-            <ul class="package-list">
-              <li>Iron remover treatment</li>
-              <li>Clay bar decontamination</li>
-            </ul>
-            <h4 class="package-list-title">Benefits</h4>
-            <ul class="package-list">
-              <li>Smooth paint finish</li>
-              <li>Removes embedded contaminants</li>
-              <li>Enhances sealant performance</li>
-              <li>Restores paint clarity</li>
-            </ul>
-          </div>
-        </div>
-        <p class="addon-disclaimer">Pricing: Coupes / Sedans $40–$60; SUVs / Trucks $60–$80. Select your vehicle size in the header to see your range. This add-on is selectable at checkout or here — it is not included inside packages.</p>
-        <div style="text-align: center; margin-top: var(--space-lg);">
-          <a href="booking.html" class="btn btn-outline">Book and add options</a>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="section">
-      <div class="container">
-        <div class="contact-strip">
-          <p class="contact-strip-title"><strong>Contact us here!</strong></p>
-          <a href="tel:4849990194" class="contact-strip-phone">(484) 999-0194</a>
-          <p class="contact-strip-note">Call for a free quote</p>
-          <a href="booking.html" class="btn btn-primary" style="margin-top: var(--space-md);">Book Now</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <span class="footer-brand">Sopes Auto Detailing</span>
-        <nav class="footer-links">
-          <a href="index.html">Home</a>
-          <a href="services.html">Services</a>
-          <a href="maintenance.html">Maintenance</a>
+      <div>
+        <div class="footer-col-label">Company</div>
+        <div class="footer-links">
           <a href="gallery.html">Gallery</a>
-          <a href="areas.html">Areas</a>
-          <a href="policies.html">Policies / FAQ</a>
+          <a href="areas.html">Service Areas</a>
+          <a href="policies.html">Policies &amp; FAQ</a>
           <a href="booking.html">Book Now</a>
-        </nav>
-        <div class="footer-social">
-          <a href="https://facebook.com/share/1AEvjMZHsa/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook</a>
-          <a href="https://instagram.com/sopesautodetailing?igsh=Y3BjMGs1MzUzaGtv" target="_blank" rel="noopener">Instagram</a>
         </div>
-        <p class="footer-copy">&copy; Sopes Auto Detailing</p>
+      </div>
+      <div>
+        <div class="footer-col-label">Contact</div>
+        <p class="footer-contact-line"><a href="tel:4849990194">(484) 999-0194</a></p>
+        <p class="footer-contact-line">Philadelphia Region</p>
+        <div class="footer-col-label" style="margin-top:16px;">We Accept</div>
+        <div class="footer-payments">
+          <span class="pay-chip">Visa</span>
+          <span class="pay-chip">Mastercard</span>
+          <span class="pay-chip">Maestro</span>
+          <span class="pay-chip">Discover</span>
+          <span class="pay-chip">PayPal</span>
+        </div>
       </div>
     </div>
-  </footer>
+    <div class="footer-bottom">
+      <p class="footer-copy">&copy; 2025 Sopes Auto Detailing. All rights reserved.</p>
+      <p class="footer-copy"><a href="policies.html">Policies &amp; FAQ</a></p>
+    </div>
+  </div>
+</footer>
 
-  <script src="pricing-data.js"></script>
-  <script src="script.js"></script>
-  <script>
-    (function() {
-      const gallery = document.getElementById('gallery-grid');
-      if (!gallery) return;
-      const photoFiles = ['IMG_0097.JPEG', 'IMG_0106.JPEG', 'IMG_0108.JPEG', 'IMG_0277.jpeg', 'IMG_0539.jpeg', 'IMG_0719.jpeg', 'IMG_0720.JPEG', 'IMG_0721.jpeg', 'IMG_1081.JPEG', 'IMG_1096.jpeg', 'IMG_1170.jpg', 'IMG_1171.jpeg'];
-      photoFiles.forEach(function(filename) {
-        const path = 'photos/' + filename;
-        const img = new Image();
-        img.onload = function() {
-          const div = document.createElement('div');
-          div.className = 'gallery-item';
-          div.innerHTML = '<img src="' + path + '" alt="Our work">';
-          gallery.appendChild(div);
-        };
-        img.src = path;
-      });
-    })();
-    (function() {
-      const hero = document.getElementById('hero-bg');
-      if (!hero) return;
-      const paths = ['photos/IMG_0097.JPEG', 'photos/IMG_0106.JPEG', 'photos/IMG_1170.jpg'];
-      paths.forEach(function(path) {
-        const img = new Image();
-        img.onload = function() { hero.style.backgroundImage = 'url(' + path + ')'; };
-        img.src = path;
-      });
-    })();
-  </script>
+<script>
+  /* ── VISITOR TRACKING ─────────────────────────────────── */
+  (function(){
+    var page='index.html', now=Date.now();
+    var sid=sessionStorage.getItem('sopes_sid');
+    if(!sid){
+      sid='sess_'+now+'_'+Math.random().toString(36).slice(2,9);
+      sessionStorage.setItem('sopes_sid',sid);
+      localStorage.setItem('sopes_visitors',String((parseInt(localStorage.getItem('sopes_visitors')||'0')||0)+1));
+      var sessions=JSON.parse(localStorage.getItem('sopes_sessions')||'[]');
+      sessions.unshift({id:sid,start:now,pages:[]});
+      if(sessions.length>200)sessions.pop();
+      localStorage.setItem('sopes_sessions',JSON.stringify(sessions));
+    }
+    var views=JSON.parse(localStorage.getItem('sopes_pageviews')||'{}');
+    views[page]=(views[page]||0)+1;
+    localStorage.setItem('sopes_pageviews',JSON.stringify(views));
+    try{
+      var sessions=JSON.parse(localStorage.getItem('sopes_sessions')||'[]');
+      var s=sessions.find(function(x){return x.id===sid;});
+      if(s){s.pages.push({page:page,ts:now});localStorage.setItem('sopes_sessions',JSON.stringify(sessions));}
+    }catch(e){}
+  })();
+
+  /* ── LOADER ───────────────────────────────────────────── */
+  window.addEventListener('load',function(){
+    setTimeout(function(){
+      var loader=document.getElementById('loader');
+      if(loader)loader.classList.add('out');
+      // Trigger hero reveals after loader
+      setTimeout(function(){
+        document.querySelectorAll('.hero .reveal').forEach(function(el){el.classList.add('in');});
+      },100);
+    },2300);
+  });
+
+  /* ── NAV ──────────────────────────────────────────────── */
+  var nav=document.getElementById('siteNav');
+  var burger=document.getElementById('burger');
+  var drawer=document.getElementById('drawer');
+  window.addEventListener('scroll',function(){
+    nav.classList.toggle('scrolled',window.scrollY>40);
+  },{passive:true});
+  burger.addEventListener('click',function(){
+    burger.classList.toggle('open');
+    drawer.classList.toggle('open');
+  });
+  document.addEventListener('click',function(e){
+    if(!nav.contains(e.target)&&!drawer.contains(e.target)){
+      burger.classList.remove('open');
+      drawer.classList.remove('open');
+    }
+  });
+
+  /* ── SCROLL REVEAL ────────────────────────────────────── */
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){entry.target.classList.add('in');io.unobserve(entry.target);}
+    });
+  },{threshold:0.08,rootMargin:'0px 0px -28px 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+</script>
 </body>
 </html>

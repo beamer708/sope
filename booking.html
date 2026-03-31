@@ -1,84 +1,523 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Book Now | Sopes Auto Detailing</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Now — Sopes Auto Detailing</title>
+  <meta name="description" content="Book a mobile auto detail in Philadelphia. Full Detail, Exterior, Interior packages. We come to you — submit online or call (484) 999-0194." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .page-hero {
+      background: var(--dark);
+      padding: 130px 28px 64px;
+      border-bottom: 1px solid rgba(201,168,76,0.1);
+      position: relative; overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 80% 40%, rgba(26,74,39,0.35) 0%, transparent 55%);
+    }
+    .page-hero-inner { max-width: var(--max-width); margin: 0 auto; position: relative; z-index:1; }
+
+    /* ── BOOKING LAYOUT ─────────────────────────────────── */
+    .booking-layout {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 48px;
+      align-items: start;
+    }
+
+    /* ── FORM ───────────────────────────────────────────── */
+    .booking-form {
+      background: rgba(10,31,15,0.45);
+      border: 1px solid rgba(245,245,240,0.07);
+      border-radius: var(--radius-lg);
+      padding: 36px 32px;
+    }
+    .form-title {
+      font-family: var(--font-display);
+      font-size: 28px;
+      letter-spacing: 0.04em;
+      color: var(--off-white);
+      margin-bottom: 28px;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .form-group {
+      margin-bottom: 18px;
+    }
+    .form-group.full { grid-column: span 2; }
+    label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(245,245,240,0.5);
+      margin-bottom: 7px;
+    }
+    label .req { color: var(--gold); margin-left: 2px; }
+    input, select, textarea {
+      width: 100%;
+      background: rgba(6,14,9,0.6);
+      border: 1px solid rgba(245,245,240,0.1);
+      border-radius: var(--radius);
+      padding: 12px 14px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--off-white);
+      transition: border-color var(--transition), box-shadow var(--transition);
+      outline: none;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    input::placeholder, textarea::placeholder { color: rgba(245,245,240,0.28); }
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(201,168,76,0.12);
+    }
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c9a84c' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+      cursor: pointer;
+    }
+    select option { background: var(--dark); }
+    textarea { resize: vertical; min-height: 100px; }
+    .form-submit {
+      margin-top: 8px;
+      width: 100%;
+    }
+    .form-note {
+      font-size: 12px;
+      color: rgba(245,245,240,0.35);
+      margin-top: 14px;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    /* ── FORM SUCCESS STATE ─────────────────────────────── */
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 48px 24px;
+    }
+    .form-success.show { display: block; }
+    .form-success-icon { font-size: 48px; margin-bottom: 16px; }
+    .form-success-heading {
+      font-family: var(--font-display);
+      font-size: 36px;
+      color: var(--off-white);
+      margin-bottom: 10px;
+    }
+    .form-success-body { font-size: 15px; color: rgba(245,245,240,0.6); line-height: 1.6; }
+
+    /* ── SIDEBAR ────────────────────────────────────────── */
+    .booking-sidebar { display: flex; flex-direction: column; gap: 16px; }
+    .sidebar-card {
+      background: rgba(10,31,15,0.45);
+      border: 1px solid rgba(245,245,240,0.07);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+    }
+    .sidebar-card-title {
+      font-family: var(--font-display);
+      font-size: 18px;
+      letter-spacing: 0.04em;
+      color: var(--off-white);
+      margin-bottom: 12px;
+    }
+    .call-btn {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--gold);
+      color: var(--black);
+      border-radius: var(--radius);
+      padding: 14px 18px;
+      font-weight: 700;
+      font-size: 15px;
+      transition: background var(--transition), transform var(--transition);
+    }
+    .call-btn:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .call-icon { font-size: 20px; }
+    .sidebar-svc-item {
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(245,245,240,0.06);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .sidebar-svc-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .sidebar-svc-name { font-size: 14px; color: rgba(245,245,240,0.75); }
+    .sidebar-svc-price { font-size: 13px; color: var(--gold); }
+    .sidebar-step {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .sidebar-step:last-child { margin-bottom: 0; }
+    .sidebar-step-num {
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      background: var(--dark-green);
+      border: 1px solid rgba(62,168,95,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--light-green);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .sidebar-step-text { font-size: 13.5px; color: rgba(245,245,240,0.6); line-height: 1.55; }
+
+    @media (max-width: 900px) {
+      .booking-layout { grid-template-columns: 1fr; }
+      .booking-sidebar { order: -1; }
+    }
+    @media (max-width: 600px) {
+      .booking-form { padding: 24px 20px; }
+      .form-row { grid-template-columns: 1fr; }
+      .form-group.full { grid-column: span 1; }
+      .page-hero { padding: 110px 20px 48px; }
+    }
+  </style>
 </head>
 <body>
-  <header class="header">
-    <div class="header-inner container">
-      <a href="index.html" class="logo"><img src="photos/Logo.png" alt="Sopes Auto Detailing"></a>
-      <nav class="nav">
-        <a href="index.html">Home</a>
-        <a href="services.html">Services</a>
-        <a href="maintenance.html">Maintenance</a>
-        <a href="gallery.html">Gallery</a>
-        <a href="areas.html">Areas</a>
-        <a href="policies.html">Policies / FAQ</a>
-        <a href="booking.html">Booking</a>
-      </nav>
-      <button type="button" class="header-vehicle-btn" id="header-vehicle-btn" aria-label="Select vehicle size"><span id="header-vehicle-label">Select</span></button>
-      <button class="nav-toggle" aria-label="Menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+
+<div class="loader" id="loader">
+  <div class="loader-logo">SOPES</div>
+  <div class="loader-sub">Auto Detailing</div>
+  <div class="loader-track"><div class="loader-fill"></div></div>
+</div>
+
+<nav class="site-nav scrolled" id="siteNav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">SOPES <em>AUTO DETAILING</em></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="maintenance.html">Maintenance</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="areas.html">Areas</a>
+      <a href="policies.html">FAQ</a>
+      <a href="booking.html" class="nav-cta active">Book Now</a>
     </div>
-  </header>
+    <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="nav-drawer" id="drawer">
+  <a href="index.html">Home</a>
+  <a href="services.html">Services</a>
+  <a href="maintenance.html">Maintenance</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="areas.html">Areas</a>
+  <a href="policies.html">FAQ</a>
+  <a href="tel:4849990194">(484) 999-0194</a>
+  <a href="booking.html" class="drawer-cta">Book Now</a>
+</div>
 
-  <main class="page">
-    <div class="container">
-      <header class="page-head">
-        <h1 class="page-title">Book Now</h1>
-        <p class="page-desc">Book by phone for a free quote. Pricing depends on your vehicle size and the services you choose.</p>
-      </header>
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <span class="eyebrow reveal">Book Your Detail</span>
+    <h1 class="section-heading reveal" style="transition-delay:.06s">Let's Get<br>Your Car Clean.</h1>
+    <p class="section-sub reveal" style="transition-delay:.12s">Fill out the form and we'll confirm your appointment. Prefer to talk? Call <a href="tel:4849990194" style="color:var(--gold)">(484) 999-0194</a> for a free quote.</p>
+  </div>
+</div>
 
-      <div class="info-card">
-        <h2>1. Choose your vehicle size</h2>
-        <p>Pricing scales by vehicle size. Select your size on the <a href="index.html">Home</a> or <a href="services.html">Services</a> page so the prices you see match your vehicle.</p>
-        <p><a href="index.html" class="btn btn-outline">Set vehicle size on Home</a></p>
-      </div>
+<section class="page-section">
+  <div class="section-wrap">
+    <div class="booking-layout">
 
-      <div class="info-card">
-        <h2>2. Get a free quote by phone</h2>
-        <p>Call us to discuss your vehicle and get a free quote for any package, additional service, or maintenance plan.</p>
-        <a href="tel:4849990194" class="contact-phone">(484) 999-0194</a>
-      </div>
+      <!-- BOOKING FORM -->
+      <div class="reveal">
+        <form class="booking-form" id="bookingForm" onsubmit="handleBooking(event)" novalidate>
+          <div class="form-title">Booking Request</div>
 
-      <div class="cta-box">
-        <p><strong>Contact us here!</strong></p>
-        <a href="tel:4849990194" class="btn btn-primary">(484) 999-0194 — Call for a free quote</a>
-      </div>
-    </div>
-  </main>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">First Name <span class="req">*</span></label>
+              <input type="text" id="firstName" name="firstName" placeholder="John" required autocomplete="given-name" />
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last Name <span class="req">*</span></label>
+              <input type="text" id="lastName" name="lastName" placeholder="Smith" required autocomplete="family-name" />
+            </div>
+          </div>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <span class="footer-brand">Sopes Auto Detailing</span>
-        <nav class="footer-links">
-          <a href="index.html">Home</a>
-          <a href="services.html">Services</a>
-          <a href="maintenance.html">Maintenance</a>
-          <a href="gallery.html">Gallery</a>
-          <a href="areas.html">Areas</a>
-          <a href="policies.html">Policies / FAQ</a>
-          <a href="booking.html">Book Now</a>
-        </nav>
-        <div class="footer-social">
-          <a href="https://facebook.com/share/1AEvjMZHsa/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook</a>
-          <a href="https://instagram.com/sopesautodetailing?igsh=Y3BjMGs1MzUzaGtv" target="_blank" rel="noopener">Instagram</a>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="phone">Phone <span class="req">*</span></label>
+              <input type="tel" id="phone" name="phone" placeholder="(215) 555-0100" required autocomplete="tel" />
+            </div>
+            <div class="form-group">
+              <label for="email">Email <span class="req">*</span></label>
+              <input type="email" id="email" name="email" placeholder="you@email.com" required autocomplete="email" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="service">Service <span class="req">*</span></label>
+              <select id="service" name="service" required>
+                <option value="" disabled selected>Select a package</option>
+                <option value="full-detail">Full Detail — Starting at $269.99</option>
+                <option value="exterior">Exterior Only — Starting at $79.99</option>
+                <option value="interior">Interior Only — Starting at $189.99</option>
+                <option value="maintenance-biweekly">Maintenance: Bi-Weekly</option>
+                <option value="maintenance-monthly">Maintenance: Monthly</option>
+                <option value="maintenance-bimonthly">Maintenance: Bi-Monthly</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="vehicleType">Vehicle Type <span class="req">*</span></label>
+              <select id="vehicleType" name="vehicleType" required>
+                <option value="" disabled selected>Select type</option>
+                <option value="coupe-sedan">Coupe / Sedan</option>
+                <option value="suv-truck">SUV / Truck</option>
+                <option value="van-minivan">Van / Minivan</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="vehicleYear">Vehicle Year</label>
+              <input type="text" id="vehicleYear" name="vehicleYear" placeholder="e.g. 2019" maxlength="4" />
+            </div>
+            <div class="form-group">
+              <label for="vehicleMake">Make &amp; Model</label>
+              <input type="text" id="vehicleMake" name="vehicleMake" placeholder="e.g. Honda Accord" />
+            </div>
+          </div>
+
+          <div class="form-group full">
+            <label for="preferredDate">Preferred Date</label>
+            <input type="date" id="preferredDate" name="preferredDate" />
+          </div>
+
+          <div class="form-group full">
+            <label for="address">Service Location / Address</label>
+            <input type="text" id="address" name="address" placeholder="Where should we come? (address or neighborhood)" autocomplete="street-address" />
+          </div>
+
+          <div class="form-group full">
+            <label for="addons">Add-Ons</label>
+            <select id="addons" name="addons">
+              <option value="none" selected>None</option>
+              <option value="paint-decon">Paint Decontamination (Iron + Clay Bar)</option>
+              <option value="pet-hair">Pet Hair Removal</option>
+              <option value="both">Both Add-Ons</option>
+            </select>
+          </div>
+
+          <div class="form-group full">
+            <label for="notes">Additional Notes</label>
+            <textarea id="notes" name="notes" placeholder="Vehicle condition, special requests, access instructions..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-gold form-submit">Submit Booking Request</button>
+          <p class="form-note">After submitting, check your email for a copy of your request. We'll send a confirmation with appointment details within 24 hours.</p>
+        </form>
+
+        <!-- Success state -->
+        <div class="booking-form form-success" id="formSuccess">
+          <div class="form-success-icon">✅</div>
+          <div class="form-success-heading">Request Sent!</div>
+          <p class="form-success-body">
+            Thanks — we've received your booking request.<br />
+            Check your email for a copy of your submission.<br />
+            We'll send a confirmation with your appointment details within 24 hours.<br /><br />
+            Questions? Call <a href="tel:4849990194" style="color:var(--gold)">(484) 999-0194</a>.
+          </p>
         </div>
-        <p class="footer-copy">&copy; Sopes Auto Detailing</p>
+      </div>
+
+      <!-- SIDEBAR -->
+      <div class="booking-sidebar">
+
+        <!-- Call CTA -->
+        <div class="sidebar-card reveal" style="transition-delay:.1s">
+          <div class="sidebar-card-title">Prefer to Call?</div>
+          <a href="tel:4849990194" class="call-btn">
+            <span class="call-icon">📞</span>
+            <span>(484) 999-0194</span>
+          </a>
+          <p style="font-size:13px; color:rgba(245,245,240,0.45); margin-top:12px; line-height:1.55;">Call for a free quote — we'll go over pricing, availability, and answer any questions.</p>
+        </div>
+
+        <!-- Quick pricing -->
+        <div class="sidebar-card reveal" style="transition-delay:.16s">
+          <div class="sidebar-card-title">Quick Pricing</div>
+          <div class="sidebar-svc-item">
+            <span class="sidebar-svc-name">Exterior Only</span>
+            <span class="sidebar-svc-price">From $79.99</span>
+          </div>
+          <div class="sidebar-svc-item">
+            <span class="sidebar-svc-name">Interior Only</span>
+            <span class="sidebar-svc-price">From $189.99</span>
+          </div>
+          <div class="sidebar-svc-item">
+            <span class="sidebar-svc-name">Full Detail</span>
+            <span class="sidebar-svc-price">From $269.99</span>
+          </div>
+          <div class="sidebar-svc-item" style="border-top:1px solid rgba(245,245,240,0.06); margin-top:8px; padding-top:12px;">
+            <span class="sidebar-svc-name">Paint Decon Add-On</span>
+            <span class="sidebar-svc-price">$40–$80</span>
+          </div>
+          <p style="font-size:11px; color:rgba(245,245,240,0.3); margin-top:12px;">Starting prices for coupes/sedans. Varies by vehicle size &amp; condition.</p>
+          <a href="services.html" style="display:inline-block; margin-top:12px; font-size:12px; color:var(--gold);">View full pricing →</a>
+        </div>
+
+        <!-- How it works -->
+        <div class="sidebar-card reveal" style="transition-delay:.22s">
+          <div class="sidebar-card-title">What Happens Next</div>
+          <div class="sidebar-step">
+            <div class="sidebar-step-num">1</div>
+            <div class="sidebar-step-text">Submit your request — you'll get an email copy immediately.</div>
+          </div>
+          <div class="sidebar-step">
+            <div class="sidebar-step-num">2</div>
+            <div class="sidebar-step-text">We review and send your confirmation with appointment details.</div>
+          </div>
+          <div class="sidebar-step">
+            <div class="sidebar-step-num">3</div>
+            <div class="sidebar-step-text">We arrive at your location and get to work.</div>
+          </div>
+          <div class="sidebar-step">
+            <div class="sidebar-step-num">4</div>
+            <div class="sidebar-step-text">You inspect the result, then payment is collected.</div>
+          </div>
+        </div>
+
+        <!-- Payments accepted -->
+        <div class="sidebar-card reveal" style="transition-delay:.28s">
+          <div class="sidebar-card-title">We Accept</div>
+          <div style="display:flex; flex-wrap:wrap; gap:8px;">
+            <span class="pay-chip">Visa</span>
+            <span class="pay-chip">Mastercard</span>
+            <span class="pay-chip">Maestro</span>
+            <span class="pay-chip">Discover</span>
+            <span class="pay-chip">PayPal</span>
+          </div>
+          <p style="font-size:12px; color:rgba(245,245,240,0.35); margin-top:10px;">Payment collected after service completion.</p>
+        </div>
+
       </div>
     </div>
-  </footer>
+  </div>
+</section>
 
-  <script src="script.js"></script>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">SOPES <em>AUTO</em></div>
+        <p class="footer-tagline">Expert-level mobile auto detailing serving Philadelphia and surrounding suburbs.</p>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/sopesautodetailing" target="_blank" rel="noopener" class="footer-social" aria-label="Instagram">📸</a>
+          <a href="https://facebook.com/share/1AEvjMZHsa/" target="_blank" rel="noopener" class="footer-social" aria-label="Facebook">📘</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-label">Services</div>
+        <div class="footer-links">
+          <a href="services.html">Full Detail</a><a href="services.html">Exterior Only</a>
+          <a href="services.html">Interior Only</a><a href="maintenance.html">Maintenance Plans</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-label">Company</div>
+        <div class="footer-links">
+          <a href="gallery.html">Gallery</a><a href="areas.html">Service Areas</a>
+          <a href="policies.html">Policies &amp; FAQ</a><a href="booking.html">Book Now</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-label">Contact</div>
+        <p class="footer-contact-line"><a href="tel:4849990194">(484) 999-0194</a></p>
+        <p class="footer-contact-line">Philadelphia Region</p>
+        <div class="footer-col-label" style="margin-top:16px;">We Accept</div>
+        <div class="footer-payments">
+          <span class="pay-chip">Visa</span><span class="pay-chip">Mastercard</span>
+          <span class="pay-chip">Maestro</span><span class="pay-chip">Discover</span><span class="pay-chip">PayPal</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">&copy; 2025 Sopes Auto Detailing. All rights reserved.</p>
+      <p class="footer-copy"><a href="policies.html">Policies &amp; FAQ</a></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){var page='booking.html',now=Date.now();var sid=sessionStorage.getItem('sopes_sid');if(!sid){sid='sess_'+now+'_'+Math.random().toString(36).slice(2,9);sessionStorage.setItem('sopes_sid',sid);localStorage.setItem('sopes_visitors',String((parseInt(localStorage.getItem('sopes_visitors')||'0')||0)+1));var sessions=JSON.parse(localStorage.getItem('sopes_sessions')||'[]');sessions.unshift({id:sid,start:now,pages:[]});if(sessions.length>200)sessions.pop();localStorage.setItem('sopes_sessions',JSON.stringify(sessions));}var views=JSON.parse(localStorage.getItem('sopes_pageviews')||'{}');views[page]=(views[page]||0)+1;localStorage.setItem('sopes_pageviews',JSON.stringify(views));try{var sessions=JSON.parse(localStorage.getItem('sopes_sessions')||'[]');var s=sessions.find(function(x){return x.id===sid;});if(s){s.pages.push({page:page,ts:now});localStorage.setItem('sopes_sessions',JSON.stringify(sessions));}}catch(e){}})();
+  window.addEventListener('load',function(){setTimeout(function(){var l=document.getElementById('loader');if(l)l.classList.add('out');},2000);});
+  var nav=document.getElementById('siteNav'),burger=document.getElementById('burger'),drawer=document.getElementById('drawer');
+  window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>40);},{passive:true});
+  burger.addEventListener('click',function(){burger.classList.toggle('open');drawer.classList.toggle('open');});
+  document.addEventListener('click',function(e){if(!nav.contains(e.target)&&!drawer.contains(e.target)){burger.classList.remove('open');drawer.classList.remove('open');}});
+  var io=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('in');io.unobserve(entry.target);}});},{threshold:0.07,rootMargin:'0px 0px -24px 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+
+  /* ── BOOKING FORM HANDLER ─────────────────────────────── */
+  function handleBooking(e) {
+    e.preventDefault();
+    var form = document.getElementById('bookingForm');
+    var firstName  = document.getElementById('firstName').value.trim();
+    var lastName   = document.getElementById('lastName').value.trim();
+    var phone      = document.getElementById('phone').value.trim();
+    var email      = document.getElementById('email').value.trim();
+    var service    = document.getElementById('service').value;
+    var vehicleType= document.getElementById('vehicleType').value;
+
+    if (!firstName || !lastName || !phone || !email || !service || !vehicleType) {
+      alert('Please fill in all required fields.');
+      return;
+    }
+
+    /* Save booking to localStorage so admin can see it */
+    var bookings = JSON.parse(localStorage.getItem('sopes_bookings') || '[]');
+    bookings.unshift({
+      ts: Date.now(),
+      name: firstName + ' ' + lastName,
+      phone: phone,
+      email: email,
+      service: service,
+      vehicleType: vehicleType,
+      vehicleYear: document.getElementById('vehicleYear').value.trim(),
+      vehicleMake: document.getElementById('vehicleMake').value.trim(),
+      preferredDate: document.getElementById('preferredDate').value,
+      address: document.getElementById('address').value.trim(),
+      addons: document.getElementById('addons').value,
+      notes: document.getElementById('notes').value.trim()
+    });
+    if (bookings.length > 100) bookings.pop();
+    localStorage.setItem('sopes_bookings', JSON.stringify(bookings));
+
+    /* Show success */
+    form.style.display = 'none';
+    document.getElementById('formSuccess').classList.add('show');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  /* Set min date to today */
+  var dateInput = document.getElementById('preferredDate');
+  if (dateInput) {
+    dateInput.min = new Date().toISOString().split('T')[0];
+  }
+</script>
 </body>
 </html>
